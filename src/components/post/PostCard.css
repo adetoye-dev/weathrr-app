@@ -1,0 +1,16 @@
+.post {
+  width: auto;
+  height: auto;
+  border-radius: 1.5rem;
+  background-color: var(--white);
+}
+
+.user-info,
+.post-info {
+  padding: 1rem;
+}
+
+.flex-center-v {
+  display: flex;
+  align-items: center;
+}

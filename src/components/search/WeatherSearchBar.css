@@ -1,0 +1,25 @@
+.weather-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.2rem solid var(--black);
+  padding: 0.5rem 1rem;
+  width: 80%;
+  max-width: 40rem;
+  margin: 0 auto;
+  margin-block-end: 1rem;
+}
+.weather-search-input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 3.6rem;
+  width: 100%;
+}
+.weather-search-input::placeholder {
+  color: var(--grey);
+}
+
+.search-icon {
+  margin-inline-start: 0.5rem;
+}

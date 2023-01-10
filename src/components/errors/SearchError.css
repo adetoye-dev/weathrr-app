@@ -1,0 +1,9 @@
+.search-error {
+  padding: 3rem 1.5rem;
+  border: 2px solid var(--purple);
+  border-radius: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+  background-color: hsl(274 100% 71% / 0.2);
+  text-transform: lowercase;
+}

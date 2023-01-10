@@ -1,0 +1,58 @@
+.current-weather-card {
+  background-color: var(--white);
+  width: 100%;
+  max-width: 35rem;
+  padding: 1.5rem;
+  border-radius: 2rem;
+  border: 1px solid var(--black);
+  box-shadow: 6px 8px 15px 1px rgba(35, 40, 35, 0.1);
+}
+
+.weather-location {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.location-icon {
+  width: 2.5rem;
+}
+
+.location-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.country {
+  font-weight: 400;
+}
+
+.current-temperature-details {
+  display: flex;
+  margin-block-start: 2rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.current-temperature {
+  text-align: center;
+}
+
+.current-temperature > h1 {
+  font-weight: 500;
+}
+
+.weather-desc {
+  margin-block-end: 1rem;
+  color: var(--purple);
+}
+
+.current-weather-range {
+  display: flex;
+  gap: 1rem;
+}
+
+.current-temperature-icon img {
+  width: 5rem;
+  height: auto;
+}

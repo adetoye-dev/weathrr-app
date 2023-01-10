@@ -1,0 +1,47 @@
+.weather-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.current-date {
+  font-size: 1.5rem;
+  margin-block: 0.5rem;
+}
+
+.hourly-forecast {
+  margin-block-start: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.hourly-forecast-desktop {
+  display: none;
+}
+
+.weather-properties {
+  display: grid;
+  grid-template: auto auto / repeat(2, 1fr);
+  gap: 1rem;
+  margin-block: 1rem;
+}
+
+@media (min-width: 480px) {
+  .weather-card {
+    display: flex;
+  }
+  .hourly-forecast-desktop {
+    display: flex;
+    justify-content: center;
+  }
+  .hourly-forecast-mobile {
+    display: none;
+  }
+  .current-date {
+    text-align: center;
+    margin-block: 1.5rem;
+  }
+}
