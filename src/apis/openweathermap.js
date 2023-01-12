@@ -1,12 +1,10 @@
 import axios from "axios";
 
-const OPENWEATHER_API_KEY = "e84d18c71cb5b54949ced42ad1229ccd";
-
 const openweathermap = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5",
   params: {
     units: "metric",
-    APPID: OPENWEATHER_API_KEY,
+    APPID: import.meta.env.VITE_OPENWEATHER_API_KEY,
   },
 });
 
