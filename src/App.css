@@ -1,7 +1,10 @@
-.content-container {
+.container {
   width: 90%;
   max-width: 1024px;
   margin: 0 auto;
+}
+
+.content-container {
   height: auto;
   word-wrap: break-word;
   font-size: 1.6rem;

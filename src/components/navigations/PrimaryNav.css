@@ -1,10 +1,14 @@
 .header {
   position: relative;
+  padding-block: 2rem;
+  background-color: var(--green);
+}
+
+.nav-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 3rem;
-  background-color: var(--green);
 }
 
 .nav-list {
@@ -32,7 +36,7 @@
 @media (min-width: 480px) {
   .nav-list {
     background-color: transparent;
-    left: 3rem;
+    left: 0;
     position: absolute;
     flex-direction: row;
     gap: 3rem;
