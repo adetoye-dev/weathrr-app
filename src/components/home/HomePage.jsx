@@ -1,4 +1,4 @@
-import PostCard from "../post/PostCard";
+import PostCard from "../posts/PostCard";
 import Masonry from "react-masonry-css";
 
 const HomePage = () => {
