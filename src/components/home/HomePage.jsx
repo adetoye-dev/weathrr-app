@@ -20,54 +20,63 @@ const HomePage = () => {
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic4.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic2.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic1.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic5.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic3.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic5.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic6.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic7.png"
         />
         <PostCard
           title="Sit aliquam at dui leo."
           userName="Lorem Ipsum"
           temp="15°"
           location="New York"
+          postImage="pic8.png"
         />
       </Masonry>
     </>

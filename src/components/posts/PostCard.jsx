@@ -1,12 +1,11 @@
 import "./PostCard.css";
-import postImage from "../../assets/user-image.png";
 import profileIcon from "../../assets/profile-icon.png";
 
 const PostCard = (props) => {
   return (
     <div className="post">
       <div className="post-img">
-        <img src={postImage} alt="post-image" />
+        <img src={`/images/${props.postImage}`} alt="post-image" />
       </div>
       <div className="user-info flex-center-y">
         <div className="user-img">
