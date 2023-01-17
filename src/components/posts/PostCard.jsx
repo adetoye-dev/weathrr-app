@@ -1,9 +1,18 @@
 import "./PostCard.css";
 import profileIcon from "../../assets/profile-icon.png";
+import { useNavigate } from "react-router-dom";
 
 const PostCard = (props) => {
+  const navigate = useNavigate();
+
+  const viewPost = () => {
+    navigate(`/posts/${props.title}`, {
+      state: { ...props },
+    });
+  };
+
   return (
-    <div className="post">
+    <div className="post" onClick={viewPost}>
       <div className="post-img">
         <img src={`/images/${props.postImage}`} alt="post-image" />
       </div>
@@ -23,7 +32,7 @@ const PostCard = (props) => {
         <h5 className="post-title">{props.title}</h5>
         <div className="location-info flex-center-y">
           <span className="icon">
-            <img src="./icons/location-icon.svg" alt="location-icon" />
+            <img src="/icons/location-icon.svg" alt="location-icon" />
           </span>
           <span className="location">{props.location}</span>
         </div>
