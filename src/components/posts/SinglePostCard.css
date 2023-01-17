@@ -1,0 +1,49 @@
+.single-post-card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--black);
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+.single-post-image {
+  width: 100%;
+  border-radius: 1.5rem;
+  border: 1px solid var(--black);
+}
+
+.single-post-image img {
+  width: 100%;
+  margin-bottom: -5px;
+}
+
+.single-post-data {
+  padding: 2rem;
+}
+
+.single-post-location-card {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.post-location-info,
+.post-weather-info {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.single-post-title {
+  margin-block: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .single-post-card {
+    flex-direction: row;
+  }
+  .single-post-data {
+    padding: 3.5rem;
+  }
+}
