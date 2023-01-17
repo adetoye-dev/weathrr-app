@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
+import SinglePostCard from "./components/posts/SinglePostCard";
 
 const Protected = ({ isLoggedIn, children }) => {
   if (!isLoggedIn) {
@@ -30,6 +31,7 @@ const App = () => {
         }
       >
         <Route index element={<HomePage />} />
+        <Route path="posts/:id" element={<SinglePostCard />} />
         <Route path="weather" element={<WeatherPage />} />
         <Route path="chat" element={<ChatPage />} />
         <Route path="profile" element={<ProfilePage />} />
