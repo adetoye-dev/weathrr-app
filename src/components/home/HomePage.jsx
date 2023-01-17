@@ -1,5 +1,6 @@
 import PostCard from "../posts/PostCard";
 import Masonry from "react-masonry-css";
+import data from "../../../data.json";
 
 const HomePage = () => {
   const breakpoints = {
@@ -15,69 +16,17 @@ const HomePage = () => {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic4.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic2.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic1.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic5.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic3.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic5.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic6.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic7.png"
-        />
-        <PostCard
-          title="Sit aliquam at dui leo."
-          userName="Lorem Ipsum"
-          temp="15°"
-          location="New York"
-          postImage="pic8.png"
-        />
+        {data.map((item) => {
+          return (
+            <PostCard
+              title={item.title}
+              userName={item.userName}
+              temp={item.temp}
+              location={item.location}
+              postImage={item.postImage}
+            />
+          );
+        })}
       </Masonry>
     </>
   );
