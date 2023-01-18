@@ -1,0 +1,11 @@
+.user-profile-card {
+  display: flex;
+  gap: 1.5rem;
+  margin-block: 2rem;
+}
+
+.send-message-btn {
+  padding: 0.5rem 1rem;
+  background-color: var(--white);
+  border-radius: 0.5rem;
+}
