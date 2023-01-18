@@ -9,6 +9,7 @@
   word-wrap: break-word;
   font-size: 1.6rem;
   padding-block-start: 1rem;
+  margin-block-end: 7rem;
 }
 
 .my-masonry-grid {
@@ -30,6 +31,9 @@
 }
 
 @media (min-width: 700px) {
+  .content-container {
+    margin-block-end: 3rem;
+  }
   .my-masonry-grid {
     margin-left: -30px;
   }
