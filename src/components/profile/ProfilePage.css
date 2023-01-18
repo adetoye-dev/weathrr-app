@@ -1,0 +1,15 @@
+.user-posts {
+  border-top: 1px solid var(--black);
+  border-radius: 1.5rem;
+  min-height: 20rem;
+  display: grid;
+}
+
+.posts-title {
+  display: inline-flex;
+  margin: 0 auto;
+  margin-block: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--black);
+}
