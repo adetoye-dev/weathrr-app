@@ -1,5 +1,5 @@
 import PostCard from "../posts/PostCard";
-import MasonryLayout from "../weather/layouts/MasonryLayout";
+import MasonryLayout from "../layouts/MasonryLayout";
 import data from "../../../data.json";
 
 const HomePage = () => {

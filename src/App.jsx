@@ -1,5 +1,5 @@
 import "./App.css";
-import Layout from "./components/Layout";
+import PageLayout from "./components/layouts/PageLayout";
 import WeatherPage from "./components/weather/WeatherPage";
 import HomePage from "./components/home/HomePage";
 import ChatPage from "./components/chat/ChatPage";
@@ -26,7 +26,7 @@ const App = () => {
         path="/"
         element={
           <Protected isLoggedIn={isLoggedIn}>
-            <Layout />
+            <PageLayout />
           </Protected>
         }
       >
