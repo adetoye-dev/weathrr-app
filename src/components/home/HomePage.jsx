@@ -1,21 +1,11 @@
 import PostCard from "../posts/PostCard";
-import Masonry from "react-masonry-css";
+import MasonryLayout from "../weather/layouts/MasonryLayout";
 import data from "../../../data.json";
 
 const HomePage = () => {
-  const breakpoints = {
-    default: 4,
-    1100: 3,
-    700: 2,
-  };
-
   return (
     <>
-      <Masonry
-        breakpointCols={breakpoints}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
+      <MasonryLayout>
         {data.map((item) => {
           return (
             <PostCard
@@ -28,7 +18,7 @@ const HomePage = () => {
             />
           );
         })}
-      </Masonry>
+      </MasonryLayout>
     </>
   );
 };
