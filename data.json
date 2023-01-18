@@ -4,69 +4,79 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic4.png"
+    "postImage": "pic4.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic2.png"
+    "postImage": "pic2.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic1.png"
+    "postImage": "pic1.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic5.png"
+    "postImage": "pic5.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic3.png"
+    "postImage": "pic3.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic5.png"
+    "postImage": "pic5.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic6.png"
+    "postImage": "pic6.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic7.png"
+    "postImage": "pic7.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic8.png"
+    "postImage": "pic8.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   },
   {
     "title": "Sit aliquam at dui leo.",
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
-    "postImage": "pic1.png"
+    "postImage": "pic1.png",
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
   }
 ]
