@@ -24,6 +24,7 @@ const HomePage = () => {
               temp={item.temp}
               location={item.location}
               postImage={item.postImage}
+              postDesc={item.postDesc}
             />
           );
         })}

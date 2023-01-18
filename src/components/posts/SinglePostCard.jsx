@@ -26,11 +26,7 @@ const SinglePostCard = () => {
             </div>
           </div>
           <h2 className="single-post-title">{state.title}</h2>
-          <p className="post-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex ea
-            comm.
-          </p>
+          <p className="post-desc">{state.postDesc}</p>
         </div>
       </div>
     </>
