@@ -13,6 +13,8 @@
 .hourly-forecast {
   margin-block-start: 1rem;
   display: flex;
+  max-width: 800px;
+  margin-inline: auto;
   gap: 0.5rem;
   overflow: hidden;
   overflow-x: scroll;
