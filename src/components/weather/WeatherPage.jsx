@@ -7,10 +7,11 @@ import WeatherSearchBar from "../search/WeatherSearchBar";
 import SearchError from "../errors/SearchError";
 import Loader from "../loader/Loader";
 import ForecastCard from "../forecast/ForecastCard";
+import { useWeatherData } from "../../contexts/WeatherContext";
 
 const WeatherPage = () => {
   // Variable to hold/set data in state
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useWeatherData();
   const [airData, setAirData] = useState({ quality: 0, description: "Good" });
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(false);
