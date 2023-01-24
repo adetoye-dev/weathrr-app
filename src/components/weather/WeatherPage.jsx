@@ -19,20 +19,19 @@ const WeatherPage = () => {
   //function to load current all weather data
   const getData = async (city) => {
     setError(null);
-    const response = await openweathermap
-      .get("/weather", {
+    try {
+      const response = await openweathermap.get("/weather", {
         params: {
           q: city,
         },
-      })
-      .catch((err) => {
-        console.log(err.response.data);
-        setError(err.response.data.message);
       });
 
-    setWeatherData(response.data);
-    getAirQuality(response.data.coord.lat, response.data.coord.lon);
-    getForecast(response.data.coord.lat, response.data.coord.lon);
+      setWeatherData(response.data);
+      getAirQuality(response.data.coord.lat, response.data.coord.lon);
+      getForecast(response.data.coord.lat, response.data.coord.lon);
+    } catch (err) {
+      setError(err.response.data.message);
+    }
   };
 
   //function to load weather forecast
