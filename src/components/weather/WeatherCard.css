@@ -37,7 +37,6 @@
   }
   .hourly-forecast-desktop {
     display: flex;
-    justify-content: center;
   }
   .hourly-forecast-mobile {
     display: none;
