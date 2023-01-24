@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import weatherApi from "../../apis/openweathermap";
+import openweathermap from "../../apis/openweathermap";
 import fetchUserCity from "../../apis/ipapi";
 import loadAirQuality from "../../apis/waqi";
 import WeatherCard from "./WeatherCard";
@@ -14,27 +14,36 @@ const WeatherPage = () => {
   const [weatherData, setWeatherData] = useWeatherData();
   const [airData, setAirData] = useState({ quality: 0, description: "Good" });
   const [forecast, setForecast] = useState({});
-  const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [error, setError] = useState(null);
 
-  // Function so that weatherApi method can be called async because
-  // useEffect callback can not be async
+  //function to load current all weather data
   const getData = async (city) => {
-    const { response, error, errorMsg } = await weatherApi.loadWeather(city);
-    setError(error);
-    setErrorMsg(errorMsg);
+    setError(null);
+    const response = await openweathermap
+      .get("/weather", {
+        params: {
+          q: city,
+        },
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+        setError(err.response.data.message);
+      });
 
-    if (!error) {
-      setWeatherData(response);
-      getAirQuality(response.coord.lat, response.coord.lon);
-      getForecast(response.coord.lat, response.coord.lon);
-    }
+    setWeatherData(response.data);
+    getAirQuality(response.data.coord.lat, response.data.coord.lon);
+    getForecast(response.data.coord.lat, response.data.coord.lon);
   };
 
+  //function to load weather forecast
   const getForecast = async (lat, lon) => {
-    const data = await weatherApi.loadForecast(lat, lon);
-    // console.log(data);
-    setForecast(data);
+    const response = await openweathermap.get("/onecall", {
+      params: {
+        lat: lat,
+        lon: lon,
+      },
+    });
+    setForecast(response.data);
   };
 
   //get air quality from api with user location
@@ -71,7 +80,7 @@ const WeatherPage = () => {
   return (
     <>
       <WeatherSearchBar fetchWeatherData={getData} />
-      {error && <SearchError errorMsg={errorMsg} />}
+      {error && <SearchError errorMsg={error} />}
       {weatherData.main && forecast.hourly ? (
         <>
           <WeatherCard
