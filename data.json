@@ -5,7 +5,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic4.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -13,7 +14,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic2.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": true
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -21,7 +23,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic1.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -29,7 +32,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic5.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -37,7 +41,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic3.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -45,7 +50,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic5.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -53,7 +59,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic6.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": true
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -61,7 +68,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic7.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -69,7 +77,8 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic8.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   },
   {
     "title": "Sit aliquam at dui leo.",
@@ -77,6 +86,7 @@
     "temp": "15°",
     "location": "New York",
     "postImage": "pic1.png",
-    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm."
+    "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
+    "favorite": false
   }
 ]
