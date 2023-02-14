@@ -16,6 +16,7 @@ const HomePage = () => {
               location={item.location}
               postImage={item.postImage}
               postDesc={item.postDesc}
+              favorite={item.favorite}
             />
           );
         })}
