@@ -13,6 +13,9 @@ const PostCard = (props) => {
 
   return (
     <div className="post" onClick={viewPost}>
+      <div className="favorite-icon">
+        <img src="/icons/favorite.svg" alt="fav-icon" />
+      </div>
       <div className="post-img">
         <img src={`/images/${props.postImage}`} alt="post-image" />
       </div>
