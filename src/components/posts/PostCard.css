@@ -33,12 +33,12 @@
 .post-img {
   width: 100%;
   height: auto;
+  display: flex;
   border-bottom: 1px solid var(--black);
   border-radius: 1rem;
   overflow: hidden;
 }
 .post-img img {
-  margin-bottom: -5px;
   width: 100%;
 }
 

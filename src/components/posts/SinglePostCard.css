@@ -1,4 +1,5 @@
 .single-post-card {
+  position: relative;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -9,6 +10,8 @@
   background-color: var(--white);
 }
 .single-post-image {
+  position: relative;
+  display: flex;
   width: 100%;
   border-radius: 1.5rem;
   border: 1px solid var(--black);
@@ -16,7 +19,6 @@
 
 .single-post-image img {
   width: 100%;
-  margin-bottom: -5px;
 }
 
 .single-post-data {
