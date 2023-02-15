@@ -8,6 +8,14 @@ const SinglePostCard = () => {
       <div className="single-post-nav"></div>
       <div className="single-post-card">
         <div className="single-post-image">
+          <div className="favorite-icon">
+            <img
+              src={`/icons/${
+                state.favorite ? "favorite-active.svg" : "favorite.svg"
+              }`}
+              alt="fav-icon"
+            />
+          </div>
           <img src={`/images/${state.postImage}`} alt="post-image" />
         </div>
         <div className="single-post-data">
