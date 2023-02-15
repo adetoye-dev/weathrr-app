@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--white);
+  overflow: hidden;
 }
 .single-post-image {
   position: relative;
