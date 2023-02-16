@@ -1,11 +1,14 @@
 import "./ProfileCard.css";
+import { useUserData } from "../../contexts/AuthContext";
+
 const ProfileCard = () => {
+  const { currentUser } = useUserData();
   return (
     <>
-      <h1 className="user-name">Ivy Huang</h1>
+      <h1 className="user-name">{currentUser.name}</h1>
       <div className="user-profile-card">
         <div className="user-profile-image">
-          <img src="/images/profile-pic.png" alt="profile-img" />
+          <img src={currentUser.profilePic} alt="profile-img" />
         </div>
         <div className="user-profile-data">
           <div className="single-post-location-card">
