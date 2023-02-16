@@ -6,7 +6,7 @@ export const useUserData = () => {
   return useContext(authContext);
 };
 
-const AuthContext = ({ children }) => {
+const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
@@ -28,4 +28,4 @@ const AuthContext = ({ children }) => {
   );
 };
 
-export default AuthContext;
+export default AuthContextProvider;
