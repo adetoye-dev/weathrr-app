@@ -8,24 +8,25 @@ import Login from "./components/auth/Login";
 import SignUp from "./components/auth/SignUp";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useState } from "react";
+import { useUserData } from "./contexts/AuthContext";
 import SinglePostCard from "./components/posts/SinglePostCard";
 
-const Protected = ({ isLoggedIn, children }) => {
-  if (!isLoggedIn) {
+const Protected = ({ currentUser, children }) => {
+  if (!currentUser) {
     return <Navigate to="/login" replace={true} />;
   }
   return children;
 };
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const { currentUser } = useUserData();
 
   return (
     <Routes>
       <Route
         path="/"
         element={
-          <Protected isLoggedIn={isLoggedIn}>
+          <Protected currentUser={currentUser}>
             <PageLayout />
           </Protected>
         }
