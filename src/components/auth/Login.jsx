@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import "./Login.css";
+import { useUserData } from "../../contexts/AuthContext";
 
 const Login = () => {
+  const { login } = useUserData();
+
+  const handleLogin = () => {
+    login();
+  };
+
   return (
     <div className="login">
       <span className="page-logo">
@@ -29,7 +36,7 @@ const Login = () => {
           </div>
           <span className="forgot-password">Forgot password?</span>
         </div>
-        <button type="submit" className="auth-submit-btn">
+        <button type="submit" className="auth-submit-btn" onClick={handleLogin}>
           Sign in
         </button>
       </form>
