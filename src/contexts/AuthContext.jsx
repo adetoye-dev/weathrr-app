@@ -15,8 +15,12 @@ const AuthContextProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
-  const login = (user) => {
-    setCurrentUser(user);
+  const login = () => {
+    setCurrentUser({
+      id: 1,
+      name: "John Doe",
+      profilePic: "https://unsplash.com/photos/tw734wmjWck",
+    });
   };
 
   const contextValues = useMemo(() => ({ currentUser, login }), [currentUser]);
