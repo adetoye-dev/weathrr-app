@@ -6,7 +6,7 @@ export const useWeatherData = () => {
   return useContext(weatherContext);
 };
 
-const WeatherContext = ({ children }) => {
+const WeatherContextProvider = ({ children }) => {
   const [weatherData, setWeatherData] = useState({});
 
   const contextValues = useMemo(
@@ -21,4 +21,4 @@ const WeatherContext = ({ children }) => {
   );
 };
 
-export default WeatherContext;
+export default WeatherContextProvider;

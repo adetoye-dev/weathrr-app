@@ -3,15 +3,15 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
-import WeatherContext from "./contexts/WeatherContext";
 import AuthContextProvider from "./contexts/AuthContext";
+import WeatherContextProvider from "./contexts/WeatherContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthContextProvider>
-      <WeatherContext>
+      <WeatherContextProvider>
         <App />
-      </WeatherContext>
+      </WeatherContextProvider>
     </AuthContextProvider>
   </BrowserRouter>
 );
