@@ -15,11 +15,11 @@ const AuthContextProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
-  const Login = (user) => {
+  const login = (user) => {
     setCurrentUser(user);
   };
 
-  const contextValues = useMemo(() => ({ currentUser, Login }), [currentUser]);
+  const contextValues = useMemo(() => ({ currentUser, login }), [currentUser]);
 
   return (
     <authContext.Provider value={contextValues}>
