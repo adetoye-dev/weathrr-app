@@ -12,7 +12,7 @@ const PostCard = (props) => {
   };
 
   return (
-    <div className="post" onClick={viewPost}>
+    <div className="post">
       <div className="favorite-icon">
         <img
           src={`/icons/${
@@ -21,7 +21,7 @@ const PostCard = (props) => {
           alt="fav-icon"
         />
       </div>
-      <div className="post-img">
+      <div className="post-img" onClick={viewPost}>
         <img src={`/images/${props.postImage}`} alt="post-image" />
       </div>
       <div className="user-info flex-center-y">
