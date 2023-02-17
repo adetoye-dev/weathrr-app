@@ -6,11 +6,11 @@ const ProfileCard = () => {
   return (
     <>
       <h1 className="user-name">{currentUser.name}</h1>
-      <div className="user-profile-card">
-        <div className="user-profile-image">
+      <div className="profile-card">
+        <div className="profile-image">
           <img src={currentUser.profilePic} alt="profile-img" />
         </div>
-        <div className="user-profile-data">
+        <div className="profile-data">
           <div className="single-post-location-card">
             <div className="post-location-info">
               <span className="icon">

@@ -1,7 +1,22 @@
-.user-profile-card {
+.profile-card {
   display: flex;
   gap: 1.5rem;
   margin-block: 2rem;
+  outline: 2px solid red;
+}
+
+.profile-image {
+  flex: 3;
+  min-height: 250px;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-data {
+  flex: 7;
 }
 
 .send-message-btn {
