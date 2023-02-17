@@ -4,6 +4,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "1",
     "postImage": "pic4.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
@@ -13,6 +14,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "2",
     "postImage": "pic2.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": true
@@ -22,6 +24,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "3",
     "postImage": "pic1.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
@@ -31,6 +34,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "4",
     "postImage": "pic5.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
@@ -40,6 +44,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "5",
     "postImage": "pic3.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
@@ -49,6 +54,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "6",
     "postImage": "pic5.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
@@ -58,6 +64,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "7",
     "postImage": "pic6.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": true
@@ -67,6 +74,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "8",
     "postImage": "pic7.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
@@ -76,6 +84,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "9",
     "postImage": "pic8.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
@@ -85,6 +94,7 @@
     "userName": "Lorem Ipsum",
     "temp": "15°",
     "location": "New York",
+    "userId": "10",
     "postImage": "pic1.png",
     "postDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloris nisi ut aliquip ex eacomm.",
     "favorite": false
