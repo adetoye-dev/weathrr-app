@@ -1,7 +1,7 @@
 import "./PrimaryNav.css";
 import { useState } from "react";
 import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
+import NavItem from "./NavItem";
 import { useNavigate } from "react-router-dom";
 import { useUserData } from "../../contexts/AuthContext";
 
@@ -33,15 +33,9 @@ const PrimaryNav = () => {
             <div onClick={toggleNavView} className="nav-icon cancel-btn">
               <img src="/icons/close-btn.svg" alt="close-btn" />
             </div>
-            <li className="nav-list-item">
-              <Link to="/">Lookbook</Link>
-            </li>
-            <li className="nav-list-item">
-              <Link to="/weather">Weather</Link>
-            </li>
-            <li className="nav-list-item">
-              <Link to="/chat">Chat</Link>
-            </li>
+            <NavItem link="/" icon="home.svg" text="Home" />
+            <NavItem link="/weather" icon="weather.svg" text="Weather" />
+            <NavItem link="/chat" icon="chat.svg" text="Chat" />
           </ul>
           <div
             aria-controls="primary-navigation"
