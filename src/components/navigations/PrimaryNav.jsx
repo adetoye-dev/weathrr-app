@@ -33,7 +33,7 @@ const PrimaryNav = () => {
           <img src={logo} alt="logo" />
         </div>
         <div onClick={viewProfile} className="profile-icon">
-          <img src={profileIcon} />
+          <img src={currentUser.profilePic} />
         </div>
       </div>
     </header>
