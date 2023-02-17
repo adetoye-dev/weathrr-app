@@ -3,8 +3,10 @@ import "./ProfilePage.css";
 import MasonryLayout from "../layouts/MasonryLayout";
 import PostCard from "../posts/PostCard";
 import data from "../../../data.json";
+import { useLocation } from "react-router-dom";
 
 const ProfilePage = () => {
+  const { state } = useLocation();
   return (
     <>
       <ProfileCard />
