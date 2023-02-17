@@ -2,8 +2,19 @@ import "./PrimaryNav.css";
 import profileIcon from "../../assets/profile-icon.png";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useUserData } from "../../contexts/AuthContext";
 
 const PrimaryNav = () => {
+  const navigate = useNavigate();
+  const { currentUser } = useUserData();
+
+  const viewProfile = () => {
+    navigate(`/profile/${currentUser.id}`, {
+      state: { currentUser },
+    });
+  };
+
   return (
     <header className="header">
       <div className="container nav-container">
@@ -21,9 +32,9 @@ const PrimaryNav = () => {
         <div className="logo">
           <img src={logo} alt="logo" />
         </div>
-        <Link to="/profile" className="profile-icon">
+        <div onClick={viewProfile} className="profile-icon">
           <img src={profileIcon} />
-        </Link>
+        </div>
       </div>
     </header>
   );
