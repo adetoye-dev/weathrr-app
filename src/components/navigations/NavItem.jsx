@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const NavItem = ({ icon, text, link }) => {
+const NavItem = ({ icon, text, link, handleClick }) => {
   return (
-    <li className="nav-list-item">
+    <li className="nav-list-item" onClick={handleClick}>
       <Link to={link} className="nav-link">
         <span className="nav-icon">
           <img src={`/icons/${icon}`} alt="nav-icon" />

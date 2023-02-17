@@ -33,9 +33,24 @@ const PrimaryNav = () => {
             <div onClick={toggleNavView} className="nav-icon cancel-btn">
               <img src="/icons/close-btn.svg" alt="close-btn" />
             </div>
-            <NavItem link="/" icon="home.svg" text="Home" />
-            <NavItem link="/weather" icon="weather.svg" text="Weather" />
-            <NavItem link="/chat" icon="chat.svg" text="Chat" />
+            <NavItem
+              link="/"
+              icon="home.svg"
+              text="Home"
+              handleClick={toggleNavView}
+            />
+            <NavItem
+              link="/weather"
+              icon="weather.svg"
+              text="Weather"
+              handleClick={toggleNavView}
+            />
+            <NavItem
+              link="/chat"
+              icon="chat.svg"
+              text="Chat"
+              handleClick={toggleNavView}
+            />
           </ul>
           <div
             aria-controls="primary-navigation"
