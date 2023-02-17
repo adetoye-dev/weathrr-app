@@ -35,7 +35,7 @@ const App = () => {
         <Route path="posts/:id" element={<SinglePostCard />} />
         <Route path="weather" element={<WeatherPage />} />
         <Route path="chat" element={<ChatPage />} />
-        <Route path="profile" element={<ProfilePage />} />
+        <Route path="profile/:id" element={<ProfilePage />} />
       </Route>
       <Route path="login" element={<Login />} />
       <Route path="sign-up" element={<SignUp />} />
