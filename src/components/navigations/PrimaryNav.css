@@ -39,11 +39,10 @@
   padding: 0;
 }
 
-.nav-list-item {
+.nav-link {
   display: flex;
   align-items: center;
-  gap: 3rem;
-  outline: 2px solid red;
+  gap: 1rem;
 }
 
 .nav-icon {
