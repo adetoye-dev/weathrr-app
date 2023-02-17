@@ -14,17 +14,7 @@ const ProfilePage = () => {
         <div className="posts-title">Posts</div>
         <MasonryLayout>
           {data.map((item, index) => {
-            return (
-              <PostCard
-                key={index}
-                title={item.title}
-                userName={item.userName}
-                temp={item.temp}
-                location={item.location}
-                postImage={item.postImage}
-                postDesc={item.postDesc}
-              />
-            );
+            return <PostCard key={index} postData={item} />;
           })}
         </MasonryLayout>
       </div>

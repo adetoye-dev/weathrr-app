@@ -7,18 +7,7 @@ const HomePage = () => {
     <>
       <MasonryLayout>
         {data.map((item, index) => {
-          return (
-            <PostCard
-              key={index}
-              title={item.title}
-              userName={item.userName}
-              temp={item.temp}
-              location={item.location}
-              postImage={item.postImage}
-              postDesc={item.postDesc}
-              favorite={item.favorite}
-            />
-          );
+          return <PostCard key={index} postData={item} />;
         })}
       </MasonryLayout>
     </>
