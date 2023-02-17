@@ -32,7 +32,7 @@ const PostCard = ({ postData }) => {
       </div>
       <div className="user-info flex-center-y">
         <div className="user-img" onClick={() => viewProfile(postData.userId)}>
-          <img src={profileIcon} alt="user" />
+          <img src={postData.profilePic} alt="user" />
         </div>
         <span className="user-name">{postData.userName}</span>
         <div className="weather-info flex-center-y">
