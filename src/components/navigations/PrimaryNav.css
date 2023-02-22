@@ -59,6 +59,10 @@
   color: var(--black);
 }
 
+.nav-link-active {
+  border-bottom: 2px solid var(--purple);
+}
+
 .menu-btn {
   display: none;
 }
