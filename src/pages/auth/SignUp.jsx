@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
-import axios from "axios";
+import server from "../../apis/server";
 import "./SignUp.css";
 
 const SignUp = () => {
@@ -21,10 +21,7 @@ const SignUp = () => {
   const register = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/api/auth/register",
-        formInputs
-      );
+      const response = await server.post("/auth/register", formInputs);
       console.log(response);
     } catch (err) {
       console.log(err);

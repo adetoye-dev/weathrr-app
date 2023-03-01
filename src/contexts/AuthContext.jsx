@@ -1,5 +1,5 @@
 import React, { useContext, useState, useMemo, useEffect } from "react";
-import axios from "axios";
+import server from "../apis/server";
 
 const authContext = React.createContext();
 
@@ -17,13 +17,7 @@ const AuthContextProvider = ({ children }) => {
   }, [currentUser]);
 
   const login = async (input) => {
-    const response = await axios.post(
-      "http://localhost:3000/api/auth/login",
-      input,
-      {
-        withCredentials: true,
-      }
-    );
+    const response = await server.post("/auth/login", input);
 
     setCurrentUser(response.data);
   };
