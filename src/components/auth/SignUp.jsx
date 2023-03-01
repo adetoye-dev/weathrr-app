@@ -35,6 +35,15 @@ const SignUp = () => {
               placeholder="Your password"
             ></input>
           </div>
+          <div className="auth-detail">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="FirstName LastName"
+            ></input>
+          </div>
           <span className="forgot-password">Forgot password?</span>
         </div>
         <button type="submit" className="auth-submit-btn">
