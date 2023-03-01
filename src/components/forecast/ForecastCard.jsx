@@ -1,5 +1,5 @@
 import "./ForecastCard.css";
-import fetchDate from "../helpers/fetchDate";
+import fetchDate from "../../helpers/fetchDate";
 import Day from "./Day";
 
 const ForecastCard = ({ dailyForecast }) => {

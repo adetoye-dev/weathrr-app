@@ -1,8 +1,8 @@
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "../components/profile/ProfileCard";
 import "./ProfilePage.css";
-import MasonryLayout from "../layouts/MasonryLayout";
-import PostCard from "../posts/PostCard";
-import data from "../../../data.json";
+import MasonryLayout from "./layouts/MasonryLayout";
+import PostCard from "../components/posts/PostCard";
+import data from "../../data.json";
 import { useLocation } from "react-router-dom";
 
 const ProfilePage = () => {

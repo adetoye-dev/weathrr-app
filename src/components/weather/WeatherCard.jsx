@@ -3,7 +3,7 @@ import WeatherProperty from "./WeatherProperty";
 import Hour from "../forecast/Hour";
 import "./WeatherCard.css";
 
-import fetchDate from "../helpers/fetchDate";
+import fetchDate from "../../helpers/fetchDate";
 
 const WeatherCard = ({ weatherData, airData, hourlyForecast }) => {
   const currentDate = fetchDate(weatherData.dt);

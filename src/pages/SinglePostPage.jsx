@@ -1,7 +1,7 @@
-import "./SinglePostCard.css";
+import "./SinglePostPage.css";
 import { useLocation } from "react-router-dom";
 
-const SinglePostCard = () => {
+const SinglePostPage = () => {
   const { state } = useLocation();
   return (
     <>
@@ -41,4 +41,4 @@ const SinglePostCard = () => {
   );
 };
 
-export default SinglePostCard;
+export default SinglePostPage;

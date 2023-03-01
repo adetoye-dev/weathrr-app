@@ -1,4 +1,4 @@
-import PrimaryNav from "../navigations/PrimaryNav";
+import PrimaryNav from "../../components/navigations/PrimaryNav";
 import { Outlet } from "react-router-dom";
 
 const PageLayout = () => {

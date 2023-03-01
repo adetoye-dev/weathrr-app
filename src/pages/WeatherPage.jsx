@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import openweathermap from "../../apis/openweathermap";
-import fetchUserCity from "../../apis/ipapi";
-import loadAirQuality from "../../apis/waqi";
-import WeatherCard from "./WeatherCard";
-import WeatherSearchBar from "../search/WeatherSearchBar";
-import SearchError from "../errors/SearchError";
-import Loader from "../loader/Loader";
-import ForecastCard from "../forecast/ForecastCard";
-import { useWeatherData } from "../../contexts/WeatherContext";
+import openweathermap from "../apis/openweathermap";
+import fetchUserCity from "../apis/ipapi";
+import loadAirQuality from "../apis/waqi";
+import WeatherCard from "../components/weather/WeatherCard";
+import WeatherSearchBar from "../components/search/WeatherSearchBar";
+import SearchError from "../components/errors/SearchError";
+import Loader from "../components/loader/Loader";
+import ForecastCard from "../components/forecast/ForecastCard";
+import { useWeatherData } from "../contexts/WeatherContext";
 
 const WeatherPage = () => {
   // Variable to hold/set data in state

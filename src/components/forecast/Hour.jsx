@@ -1,5 +1,5 @@
 import "./Hour.css";
-import fetchIcon from "../helpers/fetchIcon";
+import fetchIcon from "../../helpers/fetchIcon";
 
 const Hour = ({ time, icon, temp }) => {
   const tempIcon = fetchIcon(icon);

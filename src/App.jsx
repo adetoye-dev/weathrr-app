@@ -1,15 +1,14 @@
 import "./App.css";
-import PageLayout from "./components/layouts/PageLayout";
-import WeatherPage from "./components/weather/WeatherPage";
-import HomePage from "./components/home/HomePage";
-import ChatPage from "./components/chat/ChatPage";
-import ProfilePage from "./components/profile/ProfilePage";
-import Login from "./components/auth/Login";
-import SignUp from "./components/auth/SignUp";
+import PageLayout from "./pages/layouts/PageLayout";
+import WeatherPage from "./pages/WeatherPage";
+import HomePage from "./pages/HomePage";
+import ChatPage from "./pages/ChatPage";
+import ProfilePage from "./pages/ProfilePage";
+import Login from "./pages/auth/Login";
+import SignUp from "./pages/auth/SignUp";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
 import { useUserData } from "./contexts/AuthContext";
-import SinglePostCard from "./components/posts/SinglePostCard";
+import SinglePostPage from "./pages/SinglePostPage";
 
 const Protected = ({ currentUser, children }) => {
   if (!currentUser) {
@@ -32,7 +31,7 @@ const App = () => {
         }
       >
         <Route index element={<HomePage />} />
-        <Route path="posts/:id" element={<SinglePostCard />} />
+        <Route path="posts/:id" element={<SinglePostPage />} />
         <Route path="weather" element={<WeatherPage />} />
         <Route path="chat" element={<ChatPage />} />
         <Route path="profile/:id" element={<ProfilePage />} />

@@ -1,6 +1,6 @@
-import PostCard from "../posts/PostCard";
-import MasonryLayout from "../layouts/MasonryLayout";
-import data from "../../../data.json";
+import PostCard from "../components/posts/PostCard";
+import MasonryLayout from "./layouts/MasonryLayout";
+import data from "../../data.json";
 
 const HomePage = () => {
   return (

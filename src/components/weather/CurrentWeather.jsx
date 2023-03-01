@@ -1,5 +1,5 @@
 import "./CurrentWeatherCard.css";
-import fetchIcon from "../helpers/fetchIcon";
+import fetchIcon from "../../helpers/fetchIcon";
 
 const CurrentWeather = (props) => {
   const icon = fetchIcon(props.icon);

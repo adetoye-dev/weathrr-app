@@ -1,5 +1,5 @@
 import "./Day.css";
-import fetchIcon from "../helpers/fetchIcon";
+import fetchIcon from "../../helpers/fetchIcon";
 
 const Day = ({ weekday, icon, low, high }) => {
   const tempIcon = fetchIcon(icon);
