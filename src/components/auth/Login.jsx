@@ -2,12 +2,30 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import "./Login.css";
 import { useUserData } from "../../contexts/AuthContext";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const { login } = useUserData();
 
-  const handleLogin = () => {
-    login();
+  const [formInputs, setFormInputs] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await login(formInputs);
+      navigate("/");
+    } catch (err) {
+      console.log(err.response.data);
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -19,11 +37,13 @@ const Login = () => {
       <form className="auth-form">
         <div className="user-auth-details">
           <div className="auth-detail">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="username">Username</label>
             <input
-              id="email"
-              type="email"
-              placeholder="example@mail.com"
+              id="username"
+              type="text"
+              name="username"
+              placeholder="username"
+              onChange={handleChange}
             ></input>
           </div>
           <div className="auth-detail">
@@ -31,7 +51,9 @@ const Login = () => {
             <input
               id="password"
               type="password"
+              name="password"
               placeholder="Your password"
+              onChange={handleChange}
             ></input>
           </div>
           <span className="forgot-password">Forgot password?</span>
