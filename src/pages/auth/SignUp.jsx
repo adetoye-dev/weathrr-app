@@ -45,6 +45,7 @@ const SignUp = () => {
               id="username"
               name="username"
               type="text"
+              value={formInputs.username}
               placeholder="create a user name"
               onChange={handleChange}
             ></input>
@@ -55,6 +56,7 @@ const SignUp = () => {
               id="email"
               name="email"
               type="email"
+              value={formInputs.email}
               placeholder="example@mail.com"
               onChange={handleChange}
             ></input>
@@ -65,6 +67,7 @@ const SignUp = () => {
               id="password"
               name="password"
               type="password"
+              value={formInputs.password}
               placeholder="Your password"
               onChange={handleChange}
             ></input>
@@ -75,6 +78,7 @@ const SignUp = () => {
               id="name"
               name="name"
               type="text"
+              value={formInputs.name}
               placeholder="FirstName LastName"
               onChange={handleChange}
             ></input>
