@@ -28,7 +28,7 @@ const PostCard = ({ postData }) => {
         />
       </div>
       <div className="post-img" onClick={viewPost}>
-        <img src={`/images/${postData.postImage}`} alt="post-image" />
+        <img src={`/images/${postData.img}`} alt="post-image" />
       </div>
       <div className="user-info flex-center-y">
         <div className="user-img" onClick={() => viewProfile(postData.userId)}>
