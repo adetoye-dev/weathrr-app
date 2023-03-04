@@ -3,6 +3,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .forecast-card h3 {
@@ -12,8 +14,14 @@
 
 .daily-forecasts {
   width: 100%;
-  max-width: 35rem;
+  justify-content: center;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .daily-forecasts {
+    gap: 1.5rem;
+  }
 }

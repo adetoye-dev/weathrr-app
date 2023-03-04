@@ -1,5 +1,6 @@
 .day {
   width: 100%;
+  max-width: 35rem;
   padding: 1.5rem 2rem;
   display: flex;
   background-color: var(--white);
