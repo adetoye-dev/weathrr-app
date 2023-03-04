@@ -1,13 +1,16 @@
 import { NavLink } from "react-router-dom";
 
-const NavItem = ({ icon, text, link, handleClick }) => {
+const NavItem = ({ icon, activeIcon, text, link }) => {
   return (
-    <li className="nav-list-item" onClick={handleClick}>
+    <li className="nav-list-item">
       <NavLink to={link} className="nav-link">
         {({ isActive }) => (
           <>
             <span className="nav-icon">
-              <img src={`/icons/${icon}`} alt="nav-icon" />
+              <img
+                src={`/icons/${isActive ? activeIcon : icon}`}
+                alt="nav-icon"
+              />
             </span>
             <span
               className={isActive ? "nav-link-active nav-text" : "nav-text"}

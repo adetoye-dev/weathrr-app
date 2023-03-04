@@ -1,19 +1,12 @@
 import "./PrimaryNav.css";
-import { useState } from "react";
 import logo from "../../assets/logo.svg";
 import NavItem from "./NavItem";
 import { useNavigate } from "react-router-dom";
 import { useUserData } from "../../contexts/AuthContext";
 
 const PrimaryNav = () => {
-  const [dataAttributes, setDataAttributes] = useState(false);
-
   const navigate = useNavigate();
   const { currentUser } = useUserData();
-
-  const toggleNavView = () => {
-    setDataAttributes((prevAttr) => !prevAttr);
-  };
 
   const viewProfile = () => {
     navigate(`/profile/${currentUser.id}`, {
@@ -24,48 +17,34 @@ const PrimaryNav = () => {
   return (
     <header className="header">
       <div className="container nav-container">
+        <div className="logo">
+          <img src={logo} alt="logo" />
+        </div>
         <nav className="nav">
-          <ul
-            className="primary-navigation"
-            data-visible={dataAttributes}
-            id="primary-navigation"
-          >
-            <div onClick={toggleNavView} className="nav-icon cancel-btn">
-              <img src="/icons/close-btn.svg" alt="close-btn" />
-            </div>
+          <ul className="primary-navigation" id="primary-navigation">
             <NavItem
               link="/"
               icon="home.svg"
+              activeIcon="home-active.svg"
               text="Home"
-              handleClick={toggleNavView}
             />
             <NavItem
               link="/weather"
               icon="weather.svg"
+              activeIcon="weather-active.svg"
               text="Weather"
-              handleClick={toggleNavView}
             />
             <NavItem
               link="/chat"
               icon="chat.svg"
+              activeIcon="chat-active.svg"
               text="Chat"
-              handleClick={toggleNavView}
             />
           </ul>
-          <div
-            aria-controls="primary-navigation"
-            onClick={toggleNavView}
-            className="nav-icon menu-btn"
-          >
-            <img src="/icons/menu-btn.svg" alt="menu-btn" />
+          <div onClick={viewProfile} className="profile-icon">
+            <img src={currentUser.profilePic} alt="profile-pic" />
           </div>
         </nav>
-        <div className="logo">
-          <img src={logo} alt="logo" />
-        </div>
-        <div onClick={viewProfile} className="profile-icon">
-          <img src={currentUser.profilePic} alt="profile-pic" />
-        </div>
       </div>
     </header>
   );
