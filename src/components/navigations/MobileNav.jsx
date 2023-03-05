@@ -26,10 +26,10 @@ const MobileNav = () => {
         link="/chat"
       />
       <NavItem
-        icon="user.svg"
-        activeIcon="user-active.svg"
-        text="profile"
-        link="/profile/1"
+        icon="bookmark.svg"
+        activeIcon="bookmark-active.svg"
+        text="Bookmarks"
+        link="/bookmarks"
       />
     </div>
   );

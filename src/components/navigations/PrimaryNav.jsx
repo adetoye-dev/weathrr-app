@@ -40,6 +40,12 @@ const PrimaryNav = () => {
               activeIcon="chat-active.svg"
               text="Chat"
             />
+            <NavItem
+              icon="bookmark.svg"
+              activeIcon="bookmark-active.svg"
+              text="Bookmarks"
+              link="/bookmarks"
+            />
           </ul>
           <div onClick={viewProfile} className="profile-icon">
             <img src={currentUser.profilePic} alt="profile-pic" />
