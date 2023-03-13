@@ -66,8 +66,6 @@
 }
 
 .nav-link-active {
-  border-bottom: 2px solid var(--purple);
-  color: var(--purple);
   font-weight: 600;
 }
 
@@ -94,9 +92,39 @@
   display: none;
 }
 
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  list-style: none;
+  padding-block: 0.5rem;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  border-radius: 1.2rem 1.2rem 0 0;
+}
+
+.nav-icon {
+  width: 2.3rem;
+  aspect-ratio: 1;
+}
+
 @media (min-width: 700px) {
   .primary-navigation {
     display: flex;
+  }
+
+  .nav-icon {
+    display: none;
+  }
+
+  .nav-link-active {
+    border-bottom: 2px solid var(--purple);
+    padding-bottom: 0.2rem;
+    font-weight: 600;
   }
 
   .logo {
@@ -105,5 +133,9 @@
 
   .profile-icon {
     width: 3.5rem;
+  }
+
+  .mobile-nav {
+    display: none;
   }
 }
