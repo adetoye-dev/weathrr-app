@@ -1,36 +1,22 @@
-import "./MobileNav.css";
+import "./Nav.css";
 import NavItem from "./NavItem";
+import {
+  faHome,
+  faCloudSunRain,
+  faMessage,
+  faBookmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 const MobileNav = () => {
   return (
     <div className="mobile-nav">
-      <NavItem
-        icon="home.svg"
-        activeIcon="home-active.svg"
-        text="home"
-        link="/"
-      />
-      <NavItem
-        icon="weather.svg"
-        activeIcon="weather-active.svg"
-        text="weather"
-        link="/weather"
-      />
+      <NavItem icon={faHome} text="home" link="/" />
+      <NavItem icon={faCloudSunRain} text="weather" link="/weather" />
       <div className="new-post-icon">
         <img src="/icons/plus-icon.png" alt="plus-icon" />
       </div>
-      <NavItem
-        icon="chat.svg"
-        activeIcon="chat-active.svg"
-        text="chat"
-        link="/chat"
-      />
-      <NavItem
-        icon="bookmark.svg"
-        activeIcon="bookmark-active.svg"
-        text="Bookmarks"
-        link="/bookmarks"
-      />
+      <NavItem icon={faMessage} text="chat" link="/chat" />
+      <NavItem icon={faBookmark} text="Bookmarks" link="/bookmarks" />
     </div>
   );
 };
