@@ -39,7 +39,6 @@
 
 .nav-list-item > a {
   text-decoration: none;
-  color: var(--black);
 }
 
 .logo {
@@ -51,21 +50,21 @@
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
+  color: var(--grey);
 }
 
 .nav-icon {
-  width: 2.3rem;
-  aspect-ratio: 1;
+  font-size: 2rem;
 }
 
 .nav-text {
   text-transform: capitalize;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-decoration: none;
-  color: var(--black);
 }
 
 .nav-link-active {
+  color: var(--black);
   font-weight: 600;
 }
 
@@ -107,11 +106,6 @@
   border-radius: 1.2rem 1.2rem 0 0;
 }
 
-.nav-icon {
-  width: 2.3rem;
-  aspect-ratio: 1;
-}
-
 @media (min-width: 700px) {
   .primary-navigation {
     display: flex;
@@ -119,6 +113,10 @@
 
   .nav-icon {
     display: none;
+  }
+
+  .nav-link {
+    color: var(--black);
   }
 
   .nav-link-active {
@@ -137,5 +135,9 @@
 
   .mobile-nav {
     display: none;
+  }
+
+  .nav-text {
+    font-size: 1.5rem;
   }
 }
