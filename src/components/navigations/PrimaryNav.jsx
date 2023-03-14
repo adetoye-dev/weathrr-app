@@ -1,4 +1,4 @@
-import "./PrimaryNav.css";
+import "./Nav.css";
 import logo from "../../assets/logo.svg";
 import NavItem from "./NavItem";
 import { useNavigate } from "react-router-dom";
@@ -22,30 +22,10 @@ const PrimaryNav = () => {
         </div>
         <nav className="nav">
           <ul className="primary-navigation" id="primary-navigation">
-            <NavItem
-              link="/"
-              icon="home.svg"
-              activeIcon="home-active.svg"
-              text="Home"
-            />
-            <NavItem
-              link="/weather"
-              icon="weather.svg"
-              activeIcon="weather-active.svg"
-              text="Weather"
-            />
-            <NavItem
-              link="/chat"
-              icon="chat.svg"
-              activeIcon="chat-active.svg"
-              text="Chat"
-            />
-            <NavItem
-              icon="bookmark.svg"
-              activeIcon="bookmark-active.svg"
-              text="Bookmarks"
-              link="/bookmarks"
-            />
+            <NavItem link="/" text="Home" />
+            <NavItem link="/weather" text="Weather" />
+            <NavItem link="/chat" text="Chat" />
+            <NavItem link="/bookmarks" text="Bookmarks" />
           </ul>
           <div onClick={viewProfile} className="profile-icon">
             <img src={currentUser.profilePic} alt="profile-pic" />
