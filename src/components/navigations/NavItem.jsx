@@ -1,24 +1,19 @@
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const NavItem = ({ icon, activeIcon, text, link }) => {
+const NavItem = ({ icon, text, link }) => {
   return (
     <li className="nav-list-item">
-      <NavLink to={link} className="nav-link">
-        {({ isActive }) => (
-          <>
-            <span className="nav-icon">
-              <img
-                src={`/icons/${isActive ? activeIcon : icon}`}
-                alt="nav-icon"
-              />
-            </span>
-            <span
-              className={isActive ? "nav-link-active nav-text" : "nav-text"}
-            >
-              {text}
-            </span>
-          </>
-        )}
+      <NavLink
+        to={link}
+        className={({ isActive }) =>
+          isActive ? "nav-link nav-link-active" : "nav-link"
+        }
+      >
+        <span className="nav-icon">
+          <FontAwesomeIcon icon={icon} />
+        </span>
+        <span className="nav-text">{text}</span>
       </NavLink>
     </li>
   );
