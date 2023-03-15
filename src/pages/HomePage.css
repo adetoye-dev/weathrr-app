@@ -1,0 +1,13 @@
+.search-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-block: 1rem 2rem;
+  flex-direction: column;
+}
+
+@media (min-width: 700px) {
+  .search-container {
+    flex-direction: row;
+  }
+}
