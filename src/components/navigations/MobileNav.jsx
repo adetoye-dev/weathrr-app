@@ -3,8 +3,8 @@ import NavItem from "./NavItem";
 import {
   faHome,
   faCloudSunRain,
-  faMessage,
   faBookmark,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
 const MobileNav = () => {
@@ -15,8 +15,8 @@ const MobileNav = () => {
       <div className="new-post-icon">
         <img src="/icons/plus-icon.png" alt="plus-icon" />
       </div>
-      <NavItem icon={faMessage} text="chat" link="/chat" />
       <NavItem icon={faBookmark} text="Bookmarks" link="/bookmarks" />
+      <NavItem icon={faRightFromBracket} text="Logout" link="/logout" />
     </div>
   );
 };

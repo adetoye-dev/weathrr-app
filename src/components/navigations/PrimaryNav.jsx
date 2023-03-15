@@ -24,7 +24,6 @@ const PrimaryNav = () => {
           <ul className="primary-navigation" id="primary-navigation">
             <NavItem link="/" text="Home" />
             <NavItem link="/weather" text="Weather" />
-            <NavItem link="/chat" text="Chat" />
             <NavItem link="/bookmarks" text="Bookmarks" />
           </ul>
           <div onClick={viewProfile} className="profile-icon">
