@@ -69,10 +69,7 @@
 }
 
 .profile-icon {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.2rem;
+  display: inline-block;
   cursor: pointer;
   border: 1px solid black;
   width: 2.8rem;
@@ -104,6 +101,58 @@
   border: 1px solid var(--black);
   background-color: var(--white);
   border-radius: 1.2rem 1.2rem 0 0;
+}
+
+.profile-options {
+  background-color: white;
+  position: absolute;
+  top: 3.5rem;
+  right: 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.profile-link {
+  cursor: pointer;
+}
+
+.profile-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.view-profile-btn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.8rem;
+  border: 1px solid var(--purple);
+  background: transparent;
+  cursor: pointer;
+}
+
+.view-profile-btn:hover {
+  border-width: 2px;
+}
+
+.options {
+  border-top: 0.5px solid var(--grey);
+  font-size: 1.3rem;
+  display: none;
+}
+
+.option {
+  display: block;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.option a {
+  text-decoration: none;
+  color: var(--black);
 }
 
 @media (min-width: 700px) {
@@ -139,5 +188,13 @@
 
   .nav-text {
     font-size: 1.5rem;
+  }
+
+  .profile-options {
+    top: 4.5rem;
+  }
+
+  .options {
+    display: block;
   }
 }
