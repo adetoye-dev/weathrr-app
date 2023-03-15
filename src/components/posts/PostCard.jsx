@@ -36,7 +36,7 @@ const PostCard = ({ postData }) => {
         </div>
         <span className="user-name">{postData.userName}</span>
         <div className="weather-info flex-center-y">
-          <span className="temp">{postData.temp}</span>
+          <span className="temp">{`${postData.temp}°`}</span>
           <span className="icon">
             <img src="/icons/clear sky.svg" />
           </span>
@@ -48,7 +48,7 @@ const PostCard = ({ postData }) => {
           <span className="icon">
             <img src="/icons/location-icon.svg" alt="location-icon" />
           </span>
-          <span className="location">{postData.location}</span>
+          <span className="location">{postData.city}</span>
         </div>
       </div>
     </div>
