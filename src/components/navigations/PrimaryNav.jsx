@@ -21,7 +21,7 @@ const PrimaryNav = () => {
 
   const viewProfile = () => {
     navigate(`/profile/${currentUser.id}`, {
-      state: { currentUser },
+      state: { userId: currentUser.id },
     });
   };
 

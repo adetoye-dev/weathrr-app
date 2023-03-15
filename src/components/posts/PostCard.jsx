@@ -13,7 +13,7 @@ const PostCard = ({ postData }) => {
 
   const viewProfile = (id) => {
     navigate(`/profile/${id}`, {
-      state: {},
+      state: { userId: id },
     });
   };
 
