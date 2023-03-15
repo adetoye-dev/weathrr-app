@@ -1,8 +1,10 @@
 import PostCard from "../components/posts/PostCard";
 import MasonryLayout from "./layouts/MasonryLayout";
-import postData from "../../data.json";
 import server from "../apis/server";
 import { useQuery } from "@tanstack/react-query";
+import SearchBar from "../components/search/PostSearch";
+import FilterBox from "../components/search/FilterPosts";
+import "./HomePage.css";
 
 const HomePage = () => {
   const { isLoading, error, data } = useQuery({
@@ -13,13 +15,19 @@ const HomePage = () => {
   console.log(data);
 
   return (
-    <MasonryLayout>
-      {isLoading
-        ? "Fetching posts..."
-        : data.map((item, index) => {
-            return <PostCard key={index} postData={item} />;
-          })}
-    </MasonryLayout>
+    <>
+      <div className="search-container">
+        <SearchBar />
+        <FilterBox />
+      </div>
+      <MasonryLayout>
+        {isLoading
+          ? "Fetching posts..."
+          : data.map((item, index) => {
+              return <PostCard key={index} postData={item} />;
+            })}
+      </MasonryLayout>
+    </>
   );
 };
 
