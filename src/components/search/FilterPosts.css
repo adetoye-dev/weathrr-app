@@ -1,0 +1,11 @@
+.filter-box {
+  padding: 1.2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.6rem;
+  background-color: var(--white);
+  color: var(--black);
+  width: 50%;
+  align-self: flex-end;
+  width: auto;
+}
