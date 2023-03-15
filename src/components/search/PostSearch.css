@@ -1,0 +1,25 @@
+.search-form {
+  width: 100%;
+  max-width: 42rem;
+  padding: 1.2rem 1.5rem;
+  border-radius: 0.6rem;
+  background-color: var(--white);
+  display: flex;
+}
+
+.search-location {
+  margin-inline-end: 1.5rem;
+  font-size: 1.3rem;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.search-input {
+  background-color: transparent;
+  border: none;
+  color: var(--black);
+}
+
+.search-input::placeholder {
+  color: var(--grey);
+}
