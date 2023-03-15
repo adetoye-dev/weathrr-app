@@ -75,7 +75,7 @@ const PrimaryNav = () => {
                 <span className="profile-icon">
                   <img src={currentUser.profilePic} alt="profile-pic" />
                 </span>
-                <span className="profile-name">{currentUser.name}</span>
+                <span className="user-name">{currentUser.name}</span>
               </div>
               <button className="view-profile-btn">view Profile</button>
             </div>
