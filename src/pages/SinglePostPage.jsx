@@ -16,7 +16,7 @@ const SinglePostPage = () => {
               alt="fav-icon"
             />
           </div>
-          <img src={`/images/${state.postImage}`} alt="post-image" />
+          <img src={`/images/${state.img}`} alt="post-image" />
         </div>
         <div className="single-post-data">
           <div className="single-post-location-card">
@@ -24,7 +24,7 @@ const SinglePostPage = () => {
               <span className="icon">
                 <img src="/icons/location-icon.png" alt="location-icon" />
               </span>
-              <span className="post-location">{state.location}</span>
+              <span className="post-location">{state.city}</span>
             </div>
             <div className="post-weather-info">
               <span className="temp">{state.temp}</span>
