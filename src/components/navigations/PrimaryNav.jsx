@@ -7,11 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { useUserData } from "../../contexts/AuthContext";
 import { faPlus, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAddPost } from "../../contexts/AddPostContext";
 
 const PrimaryNav = () => {
   const [profileOptionsOpen, setProfileOptionsOpen] = useState(false);
   const navigate = useNavigate();
   const { currentUser } = useUserData();
+  const { handleClickOpen } = useAddPost();
 
   const navOptions = useRef();
 
@@ -80,7 +82,13 @@ const PrimaryNav = () => {
               <button className="view-profile-btn">view Profile</button>
             </div>
             <div className="options">
-              <span className="new-post option" onClick={closeOptions}>
+              <span
+                className="new-post option"
+                onClick={() => {
+                  handleClickOpen();
+                  closeOptions();
+                }}
+              >
                 <FontAwesomeIcon icon={faPlus} /> New Post
               </span>
               <span className="logout option" onClick={closeOptions}>
