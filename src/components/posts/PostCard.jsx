@@ -28,7 +28,7 @@ const PostCard = ({ postData }) => {
         />
       </div>
       <div className="post-img" onClick={viewPost}>
-        <img src={`/images/${postData.img}`} alt="post-image" />
+        <img src={postData.img} alt="post-image" />
       </div>
       <div className="user-info flex-center-y">
         <div className="user-img" onClick={() => viewProfile(postData.userId)}>
@@ -43,7 +43,7 @@ const PostCard = ({ postData }) => {
         </div>
       </div>
       <div className="post-info flex-center-y">
-        <h5 className="post-title">{postData.title}</h5>
+        <h5 className="post-desc">{postData.desc}</h5>
         <div className="location-info flex-center-y">
           <span className="icon">
             <img src="/icons/location-icon.svg" alt="location-icon" />
