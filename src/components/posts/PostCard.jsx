@@ -1,9 +1,31 @@
 import "./PostCard.css";
-import profileIcon from "../../assets/profile-icon.png";
 import { useNavigate } from "react-router-dom";
+import server from "../../apis/server";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useUserData } from "../../contexts/AuthContext";
 
 const PostCard = ({ postData }) => {
   const navigate = useNavigate();
+  const { currentUser } = useUserData();
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (bookmarked) => {
+      if (bookmarked) return server.delete("/bookmarks?postId=" + postData.id);
+      return server.post("/bookmarks", { postId: postData.id });
+    },
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["bookmarks"] });
+    },
+  });
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["bookmarks", postData.id],
+    queryFn: () =>
+      server.get("/bookmarks?postId=" + postData.id).then((res) => res.data),
+  });
 
   const viewPost = () => {
     navigate(`/posts/${postData.title}`, {
@@ -17,12 +39,19 @@ const PostCard = ({ postData }) => {
     });
   };
 
+  const handleBookmark = (e) => {
+    e.preventDefault();
+    mutation.mutate(data.includes(currentUser.id));
+  };
+
   return (
     <div className="post">
-      <div className="favorite-icon">
+      <div className="favorite-icon" onClick={handleBookmark}>
         <img
           src={`/icons/${
-            postData.favorite ? "favorite-active.svg" : "favorite.svg"
+            data && data.includes(currentUser.id)
+              ? "favorite-active.svg"
+              : "favorite.svg"
           }`}
           alt="fav-icon"
         />
