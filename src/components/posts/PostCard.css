@@ -73,12 +73,21 @@
 .post-info {
   padding: 0.5rem 1rem 1rem 1rem;
   flex-direction: column;
-  align-items: flex-start;
   gap: 0.5rem;
 }
 
-.post-title {
+.post-desc {
   font-size: 1.3rem;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.location-info {
+  margin-left: auto;
 }
 
 @media (min-width: 700px) {
@@ -94,12 +103,7 @@
     width: 4rem;
     height: 4rem;
   }
-  .post-info {
-    flex-direction: row;
-    align-items: center;
-  }
   .location-info {
-    margin-left: auto;
     font-size: 1.2rem;
   }
 }
