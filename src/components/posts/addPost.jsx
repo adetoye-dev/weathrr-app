@@ -45,6 +45,7 @@ const AddPost = () => {
     },
     onSuccess: () => {
       // Invalidate and refetch
+      closeModal();
       queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
