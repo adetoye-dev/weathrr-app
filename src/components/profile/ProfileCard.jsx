@@ -9,7 +9,7 @@ const ProfileCard = ({ user }) => {
   const queryClient = useQueryClient();
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["relationships", user.id],
+    queryKey: ["followers", user.id],
     queryFn: () =>
       server.get("/relationships?userId=" + user.id).then((res) => res.data),
   });
@@ -26,7 +26,21 @@ const ProfileCard = ({ user }) => {
         .then((res) => res.data),
   });
 
-  console.log(data, followingData);
+  const mutation = useMutation({
+    mutationFn: (followed) => {
+      if (followed) return server.delete("/relationships?userId=" + user.id);
+      return server.post("/relationships", { userId: user.id });
+    },
+    onSuccess: () => {
+      // Invalidate and refetch
+      queryClient.invalidateQueries({ queryKey: ["followers"] });
+    },
+  });
+
+  const handleFollow = (e) => {
+    e.preventDefault();
+    mutation.mutate(data.includes(currentUser.id));
+  };
 
   return (
     <>
@@ -65,7 +79,7 @@ const ProfileCard = ({ user }) => {
         {user.id === currentUser.id ? (
           <button className="follow-user-btn">Update Profile</button>
         ) : (
-          <button className="follow-user-btn">
+          <button className="follow-user-btn" onClick={handleFollow}>
             {data && data.includes(currentUser.id) ? "following" : "follow"}
           </button>
         )}
