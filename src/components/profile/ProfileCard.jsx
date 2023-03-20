@@ -1,6 +1,33 @@
 import "./ProfileCard.css";
+import { useUserData } from "../../contexts/AuthContext";
+import server from "../../apis/server";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 const ProfileCard = ({ user }) => {
+  const { currentUser } = useUserData();
+
+  const queryClient = useQueryClient();
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["relationships", user.id],
+    queryFn: () =>
+      server.get("/relationships?userId=" + user.id).then((res) => res.data),
+  });
+
+  const {
+    isLoading: followingLoading,
+    error: err,
+    data: followingData,
+  } = useQuery({
+    queryKey: ["following", user.id],
+    queryFn: () =>
+      server
+        .get("/relationships/following?userId=" + user.id)
+        .then((res) => res.data),
+  });
+
+  console.log(data, followingData);
+
   return (
     <>
       <div className="profile-card">
@@ -20,10 +47,28 @@ const ProfileCard = ({ user }) => {
           nsectetur adipiscing elit, sed do eiusmod tempor incididunt u
         </div>
         <div className="follow-metrics">
-          <span className="follower-count">0 followers</span>
-          <span className="following-count">0 following</span>
+          {isLoading ? (
+            "loading followers"
+          ) : (
+            <span className="follower-count">
+              {data ? data.length : 0} followers
+            </span>
+          )}
+          {followingLoading ? (
+            "loading followings"
+          ) : (
+            <span className="following-count">
+              {followingData ? followingData.length : 0} following
+            </span>
+          )}
         </div>
-        <button className="follow-user-btn">Follow</button>
+        {user.id === currentUser.id ? (
+          <button className="follow-user-btn">Update Profile</button>
+        ) : (
+          <button className="follow-user-btn">
+            {data && data.includes(currentUser.id) ? "following" : "follow"}
+          </button>
+        )}
       </div>
     </>
   );
