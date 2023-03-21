@@ -15,7 +15,11 @@ const BookmarkPage = () => {
     <>
       {isLoading ? (
         "Fetching saved posts..."
-      ) : data.length === 0 ? (
+      ) : error ? (
+        <p>
+          Unable to fetch saved posts, Kindly check your connection and retry!
+        </p>
+      ) : data && data.length === 0 ? (
         <div className="bookmarks" style={{ textAlign: "center" }}>
           <h3>No saved posts.</h3>
         </div>
