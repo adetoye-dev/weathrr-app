@@ -12,43 +12,31 @@ const ProfilePage = () => {
 
   const queryClient = useQueryClient();
 
-  const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState();
-
-  const { isLoading, error, data } = useQuery({
+  const {
+    isLoading,
+    error,
+    data: user,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: () =>
       server.get(`/users/${state.userId}`).then((res) => {
-        setUser(res.data[0]);
+        return res.data[0];
+      }),
+  });
+
+  const {
+    isLoading: loadingPosts,
+    error: postsError,
+    data: posts,
+  } = useQuery({
+    queryKey: ["posts"],
+    queryFn: () =>
+      server.get(`/posts/${state.userId}`).then((res) => {
         return res.data;
       }),
   });
 
-  const mutation = useMutation({
-    mutationFn: server.get(`/users/${state.userId}`).then((res) => {
-      setUser(res.data[0]);
-      return res.data;
-    }),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["users"] }),
-  });
-
-  useEffect(() => {
-    mutation.mutate();
-  }, [state.userId]);
-
-  useEffect(() => {
-    const fetchUserPosts = async () => {
-      const posts = await server
-        .get(`/posts/${user.id}`)
-        .then((res) => res.data);
-      setPosts(posts);
-    };
-    if (user) {
-      fetchUserPosts();
-    }
-  }, [user]);
-
-  console.log(data, user);
+  console.log(user);
   return (
     <>
       {isLoading ? (
@@ -58,7 +46,9 @@ const ProfilePage = () => {
           {user && <ProfileCard user={user} />}
           <div className="user-posts">
             <div className="posts-title">Posts</div>
-            {posts && posts.length ? (
+            {loadingPosts ? (
+              "Loading posts"
+            ) : posts && posts.length ? (
               <MasonryLayout>
                 {posts.map((item, index) => {
                   return <PostCard key={index} postData={item} />;
