@@ -21,11 +21,15 @@ const HomePage = () => {
         <FilterBox />
       </div>
       <MasonryLayout>
-        {isLoading
-          ? "Fetching posts..."
-          : data.map((item, index) => {
-              return <PostCard key={index} postData={item} />;
-            })}
+        {isLoading ? (
+          "Fetching posts..."
+        ) : error ? (
+          <p>Unable to fetch posts, Kindly check your connection and retry!</p>
+        ) : (
+          data.map((item, index) => {
+            return <PostCard key={index} postData={item} />;
+          })
+        )}
       </MasonryLayout>
     </>
   );
