@@ -90,7 +90,7 @@ const WeatherPage = () => {
           <ForecastCard dailyForecast={forecast.daily} />
         </>
       ) : (
-        <Loader />
+        <Loader loaderText="Fetching Weather..." />
       )}
     </>
   );
