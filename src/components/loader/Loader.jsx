@@ -1,9 +1,9 @@
 import "./Loader.css";
-const Loader = () => {
+const Loader = ({ loaderText }) => {
   return (
     <div className="loader">
       <div className="loader-animation"></div>
-      <p className="loader-text">Fetching Weather...</p>
+      <p className="loader-text">{loaderText}</p>
     </div>
   );
 };
