@@ -1,7 +1,5 @@
 import { useState } from "react";
 import "./PostSearch.css";
-import { faLocationPin } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const SearchBar = ({ findCountry }) => {
   const [location, setLocation] = useState("Lagos");
@@ -21,7 +19,7 @@ const SearchBar = ({ findCountry }) => {
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <div className="search-location">
-        <FontAwesomeIcon icon={faLocationPin} />
+        <i class="fa-solid fa-location-pin"></i>
         <span className="location-text">{location}</span>
       </div>
       <input
