@@ -63,7 +63,12 @@ const PostCard = ({ postData }) => {
         <div className="user-img" onClick={() => viewProfile(postData.userId)}>
           <img src={postData.profilePic} alt="user" />
         </div>
-        <span className="user-name">{postData.userName}</span>
+        <span
+          className="user-name"
+          onClick={() => viewProfile(postData.userId)}
+        >
+          {postData.userName}
+        </span>
         <div className="weather-info flex-center-y">
           <span className="temp">{`${postData.temp}°`}</span>
           <span className="icon">
