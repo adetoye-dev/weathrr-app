@@ -8,18 +8,19 @@ import PostCard from "../components/posts/PostCard";
 import { useLocation } from "react-router-dom";
 
 const ProfilePage = () => {
-  const { state } = useLocation();
+  const { pathname } = useLocation();
+  const userId = parseInt(pathname.split("/")[2]);
 
   const userMutation = useMutation({
     mutationFn: () =>
-      server.get(`/users/${state.userId}`).then((res) => {
+      server.get(`/users/${userId}`).then((res) => {
         return res.data[0];
       }),
   });
 
   const postMutation = useMutation({
     mutationFn: () =>
-      server.get(`/posts/${state.userId}`).then((res) => {
+      server.get(`/posts/${userId}`).then((res) => {
         return res.data;
       }),
   });
@@ -27,7 +28,7 @@ const ProfilePage = () => {
   useEffect(() => {
     userMutation.mutate();
     postMutation.mutate();
-  }, [state.userId]);
+  }, [userId]);
 
   return (
     <>
