@@ -12,9 +12,6 @@ import { useTheme } from "@mui/material/styles";
 import server from "../../apis/server";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { faFileImage } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import "./addPost.css";
 
 const AddPost = () => {
@@ -82,7 +79,7 @@ const AddPost = () => {
             />
           ) : (
             <>
-              <FontAwesomeIcon icon={faFileImage} />
+              <i class="fa-solid fa-file-image"></i>
               <span>Upload Image</span>{" "}
             </>
           )}
