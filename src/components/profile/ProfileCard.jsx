@@ -2,9 +2,13 @@ import "./ProfileCard.css";
 import { useUserData } from "../../contexts/AuthContext";
 import server from "../../apis/server";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useUpdateProfile } from "../../contexts/UpdateProfileContext";
+import UpdateProfile from "./UpdateProfile";
 
 const ProfileCard = ({ user }) => {
   const { currentUser } = useUserData();
+
+  const { handleClickOpen } = useUpdateProfile();
 
   const queryClient = useQueryClient();
 
@@ -57,9 +61,7 @@ const ProfileCard = ({ user }) => {
             <span className="post-location">{user.city}</span>
           </div>
         </div>
-        <div className="about-user">
-          nsectetur adipiscing elit, sed do eiusmod tempor incididunt u
-        </div>
+        <div className="about-user">{user.about}</div>
         <div className="follow-metrics">
           {isLoading ? (
             "loading followers"
@@ -77,13 +79,16 @@ const ProfileCard = ({ user }) => {
           )}
         </div>
         {user.id === currentUser.id ? (
-          <button className="follow-user-btn">Update Profile</button>
+          <button className="follow-user-btn" onClick={handleClickOpen}>
+            Update Profile
+          </button>
         ) : (
           <button className="follow-user-btn" onClick={handleFollow}>
             {data && data.includes(currentUser.id) ? "following" : "follow"}
           </button>
         )}
       </div>
+      <UpdateProfile />
     </>
   );
 };
