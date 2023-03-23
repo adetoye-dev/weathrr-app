@@ -12,9 +12,6 @@ import { useTheme } from "@mui/material/styles";
 import server from "../../apis/server";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { faFileImage } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const UpdateProfile = () => {
   const { open, handleClose } = useUpdateProfile();
   const { currentUser } = useUserData();
