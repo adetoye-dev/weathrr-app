@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import ProfileCard from "../components/profile/ProfileCard";
 import "./ProfilePage.css";
-import MasonryLayout from "./layouts/MasonryLayout";
+import Posts from "../components/posts/Posts";
 import server from "../apis/server";
 import { useMutation } from "@tanstack/react-query";
-import PostCard from "../components/posts/PostCard";
 import { useLocation } from "react-router-dom";
 
 const ProfilePage = () => {
@@ -18,16 +17,8 @@ const ProfilePage = () => {
       }),
   });
 
-  const postMutation = useMutation({
-    mutationFn: () =>
-      server.get(`/posts/${userId}`).then((res) => {
-        return res.data;
-      }),
-  });
-
   useEffect(() => {
     userMutation.mutate();
-    postMutation.mutate();
   }, [userId]);
 
   return (
@@ -41,17 +32,7 @@ const ProfilePage = () => {
           {userMutation.data && <ProfileCard user={userMutation.data} />}
           <div className="user-posts">
             <div className="posts-title">Posts</div>
-            {postMutation.isLoading ? (
-              "Loading posts"
-            ) : postMutation.data && postMutation.data.length ? (
-              <MasonryLayout>
-                {postMutation.data.map((item, index) => {
-                  return <PostCard key={index} postData={item} />;
-                })}
-              </MasonryLayout>
-            ) : (
-              "No posts yet"
-            )}
+            <Posts userId={userId} />
           </div>
         </>
       )}
