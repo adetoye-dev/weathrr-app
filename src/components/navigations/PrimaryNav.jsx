@@ -5,8 +5,6 @@ import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useUserData } from "../../contexts/AuthContext";
-import { faPlus, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAddPost } from "../../contexts/AddPostContext";
 
 const PrimaryNav = () => {
@@ -89,10 +87,10 @@ const PrimaryNav = () => {
                   closeOptions();
                 }}
               >
-                <FontAwesomeIcon icon={faPlus} /> New Post
+                <i class="fa-solid fa-plus"></i> New Post
               </span>
               <span className="logout option" onClick={closeOptions}>
-                <FontAwesomeIcon icon={faRightFromBracket} />
+                <i class="fa-solid fa-right-from-bracket"></i>
                 <Link to="/logout"> Logout</Link>
               </span>
             </div>

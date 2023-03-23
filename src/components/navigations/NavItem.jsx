@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavItem = ({ icon, text, link }) => {
   return (
@@ -11,7 +10,7 @@ const NavItem = ({ icon, text, link }) => {
         }
       >
         <span className="nav-icon">
-          <FontAwesomeIcon icon={icon} />
+          <i className={`fa-solid ${icon}`}></i>
         </span>
         <span className="nav-text">{text}</span>
       </NavLink>
