@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useWeatherData } from "../../contexts/WeatherContext";
 import "./PostSearch.css";
 
-const SearchBar = ({ findCountry }) => {
-  const [location, setLocation] = useState("Lagos");
+const SearchBar = () => {
+  const { weatherData, getWeatherData, weatherFetchError } = useWeatherData();
   const [value, setValue] = useState("");
 
   const handleChange = (input) => {
@@ -12,15 +13,17 @@ const SearchBar = ({ findCountry }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // fetch posts from api with entered location
-    setLocation(value);
+    getWeatherData(value);
     setValue("");
   };
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
       <div className="search-location">
-        <i class="fa-solid fa-location-pin"></i>
-        <span className="location-text">{location}</span>
+        <i className="fa-solid fa-location-pin"></i>
+        {weatherData.main && (
+          <span className="location-text">{`${weatherData.name}, ${weatherData.sys.country}`}</span>
+        )}
       </div>
       <input
         type="text"
