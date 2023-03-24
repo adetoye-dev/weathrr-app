@@ -7,11 +7,10 @@ import WeatherSearchBar from "../components/search/WeatherSearchBar";
 import SearchError from "../components/errors/SearchError";
 import Loader from "../components/loader/Loader";
 import ForecastCard from "../components/forecast/ForecastCard";
-import { useWeatherData } from "../contexts/WeatherContext";
 
 const WeatherPage = () => {
   // Variable to hold/set data in state
-  const [weatherData, setWeatherData] = useWeatherData();
+  const [weatherData, setWeatherData] = useState();
   const [airData, setAirData] = useState({ quality: 0, description: "Good" });
   const [forecast, setForecast] = useState({});
   const [error, setError] = useState(null);
@@ -80,7 +79,7 @@ const WeatherPage = () => {
     <>
       <WeatherSearchBar fetchWeatherData={getData} />
       {error && <SearchError errorMsg={error} />}
-      {weatherData.main && forecast.hourly ? (
+      {weatherData && forecast.hourly ? (
         <>
           <WeatherCard
             weatherData={weatherData}
