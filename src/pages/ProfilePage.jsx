@@ -3,12 +3,19 @@ import ProfileCard from "../components/profile/ProfileCard";
 import "./ProfilePage.css";
 import Posts from "../components/posts/Posts";
 import server from "../apis/server";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 
 const ProfilePage = () => {
   const { pathname } = useLocation();
   const userId = parseInt(pathname.split("/")[2]);
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["bookmarks"],
+    queryFn: async () => {
+      return server.get(`/posts/${userId}`).then((res) => res.data);
+    },
+  });
 
   const userMutation = useMutation({
     mutationFn: () =>
@@ -32,7 +39,7 @@ const ProfilePage = () => {
           {userMutation.data && <ProfileCard user={userMutation.data} />}
           <div className="user-posts">
             <div className="posts-title">Posts</div>
-            <Posts userId={userId} />
+            <Posts isLoading={isLoading} error={error} data={data} />
           </div>
         </>
       )}
