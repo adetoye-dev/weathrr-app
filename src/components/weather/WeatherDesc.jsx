@@ -6,7 +6,7 @@ const WeatherDesc = () => {
   return (
     <>
       {weatherData.main ? (
-        <p className="weather-desc">
+        <p className="homepage-weather-desc">
           {`Current weather in ${weatherData.name} is ${weatherData.main.temp}°, wind ${weatherData.wind.speed} m/s, feels like
       ${weatherData.main.feels_like}°. Have a nice day!`}
         </p>
