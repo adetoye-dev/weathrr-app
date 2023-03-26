@@ -1,8 +1,8 @@
 import "./CurrentWeatherCard.css";
-import fetchIcon from "../../helpers/fetchIcon";
+import fetchWeatherDesc from "../../helpers/fetchWeatherDesc";
 
 const CurrentWeather = (props) => {
-  const icon = fetchIcon(props.icon);
+  const icon = fetchWeatherDesc(props.icon);
 
   return (
     <div className="current-weather-card">

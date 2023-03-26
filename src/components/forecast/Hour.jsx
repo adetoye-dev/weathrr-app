@@ -1,8 +1,8 @@
 import "./Hour.css";
-import fetchIcon from "../../helpers/fetchIcon";
+import fetchWeatherDesc from "../../helpers/fetchWeatherDesc";
 
 const Hour = ({ time, icon, temp }) => {
-  const tempIcon = fetchIcon(icon);
+  const tempIcon = fetchWeatherDesc(icon);
   return (
     <div className="hour">
       <div className="hour-id">{time}</div>
