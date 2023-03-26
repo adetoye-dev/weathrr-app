@@ -11,7 +11,7 @@ const ProfilePage = () => {
   const userId = parseInt(pathname.split("/")[2]);
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["bookmarks"],
+    queryKey: ["myPosts"],
     queryFn: async () => {
       return server.get(`/posts/${userId}`).then((res) => res.data);
     },
