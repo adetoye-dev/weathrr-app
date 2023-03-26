@@ -48,10 +48,9 @@ const FilterBox = () => {
       name="filter"
       onChange={(e) => handleChange(e.target.value)}
       className="filter-box"
+      defaultValue="recommend"
     >
-      <option value="recommend" selected>
-        For You
-      </option>
+      <option value="recommend">For You</option>
       <option value="nearby">Nearby</option>
       <option value="following">Following</option>
       <option value="all">All Posts</option>
