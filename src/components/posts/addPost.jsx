@@ -9,6 +9,8 @@ import { useAddPost } from "../../contexts/AddPostContext";
 import { useUserData } from "../../contexts/AuthContext";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import WeatherSelect from "../formControl/WeatherSelect";
+import CountrySelect from "../formControl/CountrySelect";
 import server from "../../apis/server";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -18,9 +20,12 @@ const AddPost = () => {
   const { open, handleClose } = useAddPost();
   const { currentUser } = useUserData();
   const [file, setFile] = useState();
-  const [desc, setDesc] = useState();
-
-  console.log(desc, file);
+  const [postData, setPostData] = useState({
+    desc: "",
+    weather: "",
+    city: "",
+    country: "",
+  });
 
   const queryClient = useQueryClient();
 
@@ -49,7 +54,20 @@ const AddPost = () => {
 
   const createPost = (e) => {
     e.preventDefault();
-    mutation.mutate({ desc, img: file, city: "Amsterdam", temp: "6" });
+    mutation.mutate({
+      desc: postData.desc,
+      img: file,
+      city: postData.city,
+      weather: postData.weather,
+      country: postData.country,
+    });
+  };
+
+  const handleChange = (e) => {
+    setPostData((prevPostData) => ({
+      ...prevPostData,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   return (
@@ -79,7 +97,7 @@ const AddPost = () => {
             />
           ) : (
             <>
-              <i class="fa-solid fa-file-image"></i>
+              <i className="fa-solid fa-file-image"></i>
               <span>Upload Image</span>{" "}
             </>
           )}
@@ -90,13 +108,33 @@ const AddPost = () => {
 
         <TextField
           margin="dense"
-          id="name"
+          name="desc"
           label="Add Caption"
           type="text"
           fullWidth
           variant="standard"
-          onChange={(e) => setDesc(e.target.value)}
+          onChange={handleChange}
         />
+
+        <TextField
+          margin="dense"
+          name="city"
+          label="Enter City"
+          type="text"
+          fullWidth
+          variant="standard"
+          onChange={handleChange}
+        />
+        <div className="select-fields">
+          <WeatherSelect
+            weather={postData.weather}
+            handleChange={handleChange}
+          />
+          <CountrySelect
+            country={postData.country}
+            handleChange={handleChange}
+          />
+        </div>
       </DialogContent>
       <DialogActions>
         <Button onClick={closeModal}>Cancel</Button>

@@ -32,3 +32,13 @@
 .selected-file {
   color: var(--purple);
 }
+
+.select-fields {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.select-fields div {
+  margin-inline: 0;
+}
