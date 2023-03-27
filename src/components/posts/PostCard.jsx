@@ -69,20 +69,19 @@ const PostCard = ({ postData }) => {
         >
           {postData.userName}
         </span>
-        <div className="weather-info flex-center-y">
-          <span className="temp">{`${postData.temp}°`}</span>
-          <span className="icon">
-            <img src="/icons/clear sky.svg" />
-          </span>
-        </div>
       </div>
       <div className="post-info flex-center-y">
-        <h5 className="post-desc">{postData.desc}</h5>
         <div className="location-info flex-center-y">
           <span className="icon">
             <img src="/icons/location-icon.svg" alt="location-icon" />
           </span>
-          <span className="location">{postData.city}</span>
+          <span className="location">{`${postData.city}, ${postData.country}`}</span>
+        </div>
+        <div className="weather-info flex-center-y">
+          <span className="icon">
+            <img src={`/icons/${postData.weather}.svg`} />
+          </span>
+          <span className="post-weather">{postData.weather}</span>
         </div>
       </div>
     </div>
