@@ -2,6 +2,7 @@ import "./FilterPosts.css";
 import server from "../../apis/server";
 import { useWeatherData } from "../../contexts/WeatherContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import fetchWeatherDesc from "../../helpers/fetchWeatherDesc";
 
 const FilterBox = () => {
   const { weatherData } = useWeatherData();
@@ -16,7 +17,7 @@ const FilterBox = () => {
         case "recommend":
           return server
             .post("posts/recommend", {
-              weather: "",
+              weather: fetchWeatherDesc(weatherData.weather[0].icon),
               location: weatherData.name,
               country: weatherData.sys.country,
             })
