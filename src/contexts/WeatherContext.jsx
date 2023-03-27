@@ -21,8 +21,6 @@ const WeatherContextProvider = ({ children }) => {
           q: city,
         },
       });
-
-      console.log(response.data);
       setWeatherData(response.data);
     } catch (err) {
       setError(err.response.data.message);
