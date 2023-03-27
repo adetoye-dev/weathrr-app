@@ -4,9 +4,10 @@ import FilterBox from "../components/search/FilterPosts";
 import WeatherDesc from "../components/weather/WeatherDesc";
 import { useWeatherData } from "../contexts/WeatherContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import fetchWeatherDesc from "../helpers/fetchWeatherDesc";
 import server from "../apis/server";
 import "./HomePage.css";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const HomePage = () => {
   const { weatherData } = useWeatherData();
@@ -20,7 +21,7 @@ const HomePage = () => {
     queryFn: async () => {
       return server
         .post("posts/recommend", {
-          weather: "",
+          weather: fetchWeatherDesc(weatherData.weather[0].icon),
           location: weatherData.name,
           country: weatherData.sys.country,
         })
@@ -33,7 +34,7 @@ const HomePage = () => {
     mutationFn: async () => {
       return server
         .post("posts/recommend", {
-          weather: "",
+          weather: fetchWeatherDesc(weatherData.weather[0].icon),
           location: weatherData.name,
           country: weatherData.sys.country,
         })
@@ -44,11 +45,18 @@ const HomePage = () => {
     },
   });
 
+  const isFirstRender = useRef(true);
+
   useEffect(() => {
-    if (weatherData.name) {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    if (data) {
       mutation.mutate();
     }
-  }, [weatherData]);
+  }, [weatherData.name]);
 
   return (
     <>
