@@ -15,18 +15,45 @@ const WeatherSelect = ({ weather, handleChange }) => {
         name="weather"
         value={weather}
       >
-        <MenuItem value="">
+        <MenuItem className="weather-select-menu-item" value="">
           <em>Select Weather</em>
         </MenuItem>
-        <MenuItem value="clear sky">Clear Sky</MenuItem>
-        <MenuItem value="few clouds">Few Clouds</MenuItem>
-        <MenuItem value="scattered clouds">Scattered Clouds</MenuItem>
-        <MenuItem value="broken clouds">Broken Clouds</MenuItem>
-        <MenuItem value="shower rain">Shower Rain</MenuItem>
-        <MenuItem value="rain">Rain</MenuItem>
-        <MenuItem value="thunderstorm">Thunderstorm</MenuItem>
-        <MenuItem value="snow">Snow</MenuItem>
-        <MenuItem value="mist">Mist</MenuItem>
+        <MenuItem className="weather-select-menu-item" value="clear sky">
+          <img src="/icons/clear sky.svg" />
+          <span>Clear Sky</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="few clouds">
+          <img src="/icons/few clouds.svg" />
+          <span>Few Clouds</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="scattered clouds">
+          <img src="/icons/scattered clouds.svg" />
+          <span>Scattered Clouds</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="broken clouds">
+          <img src="/icons/broken clouds.svg" />
+          <span>Broken Clouds</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="shower rain">
+          <img src="/icons/shower rain.svg" />
+          <span>Shower Rain</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="rain">
+          <img src="/icons/rain.svg" />
+          <span>Rain</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="thunderstorm">
+          <img src="/icons/thunderstorm.svg" />
+          <span>Thunderstorm</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="snow">
+          <img src="/icons/snow.svg" />
+          <span>Snow</span>
+        </MenuItem>
+        <MenuItem className="weather-select-menu-item" value="mist">
+          <img src="/icons/mist.svg" />
+          <span>Mist</span>
+        </MenuItem>
       </Select>
     </FormControl>
   );

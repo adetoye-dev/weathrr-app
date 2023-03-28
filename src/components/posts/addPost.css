@@ -39,6 +39,12 @@
   justify-content: space-between;
 }
 
+.weather-select-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .select-fields div {
   margin-inline: 0;
 }
