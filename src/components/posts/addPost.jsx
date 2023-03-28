@@ -71,7 +71,12 @@ const AddPost = () => {
   };
 
   return (
-    <Dialog open={open} onClose={closeModal} fullScreen={fullScreen}>
+    <Dialog
+      theme={theme}
+      open={open}
+      onClose={closeModal}
+      fullScreen={fullScreen}
+    >
       <DialogTitle>
         <div className="profile-info">
           <span className="profile-icon">
