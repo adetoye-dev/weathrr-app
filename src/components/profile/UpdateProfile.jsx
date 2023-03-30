@@ -9,11 +9,13 @@ import { useUserData } from "../../contexts/AuthContext";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import server from "../../apis/server";
+import Loader from "../loader/Loader";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const UpdateProfile = () => {
   const { open, handleClose } = useUpdateProfile();
   const { currentUser } = useUserData();
+  const [loading, setLoading] = useState(false);
 
   const [file, setFile] = useState();
   const [formData, setFormData] = useState({
@@ -37,13 +39,32 @@ const UpdateProfile = () => {
   const closeModal = () => {
     handleClose();
     setFile("");
+    setLoading(false);
+  };
+
+  const convertImageToBase64 = (e) => {
+    const img = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setFile(reader.result.toString());
+    };
+
+    reader.readAsDataURL(img);
+  };
+
+  const uploadImage = async (img) => {
+    const data = await server
+      .post("/uploads/profile-img", { img: img })
+      .then((res) => res.data);
+    return data;
   };
 
   const mutation = useMutation({
     mutationFn: (userInfo) => {
       return server.put("/users", userInfo, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       });
     },
@@ -54,44 +75,49 @@ const UpdateProfile = () => {
     },
   });
 
-  const updateProfile = (e) => {
+  const updateProfile = async (e) => {
     e.preventDefault();
-    mutation.mutate({ profilePic: file, ...formData });
+    setLoading(true);
+    mutation.mutate({ img: await uploadImage(file), ...formData });
   };
 
   return (
     <Dialog open={open} onClose={closeModal} fullScreen={fullScreen}>
       <DialogTitle>Update Profile</DialogTitle>
       <DialogContent>
-        <form>
-          <input
-            type="file"
-            name="profilePic"
-            id="profilePic"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="about"
-            id="about"
-            value={formData.about}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="city"
-            id="city"
-            value={formData.city}
-            onChange={handleChange}
-          />
-        </form>
+        {loading ? (
+          <Loader loaderText="Updating profile..." />
+        ) : (
+          <form>
+            <input
+              type="file"
+              name="profilePic"
+              id="profilePic"
+              onChange={(e) => convertImageToBase64(e)}
+            />
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="about"
+              id="about"
+              value={formData.about}
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="city"
+              id="city"
+              value={formData.city}
+              onChange={handleChange}
+            />
+          </form>
+        )}
       </DialogContent>
       <DialogActions>
         <Button onClick={closeModal}>Cancel</Button>
