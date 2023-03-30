@@ -37,11 +37,29 @@ const AddPost = () => {
     setFile("");
   };
 
+  const convertImageToBase64 = (e) => {
+    const img = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setFile(reader.result.toString());
+    };
+
+    reader.readAsDataURL(img);
+  };
+
+  const uploadImage = async (img) => {
+    const data = await server
+      .post("/uploads/post-img", { img: img })
+      .then((res) => res.data);
+    return data;
+  };
+
   const mutation = useMutation({
     mutationFn: (newPost) => {
       return server.post("/posts/addPost", newPost, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       });
     },
@@ -52,11 +70,11 @@ const AddPost = () => {
     },
   });
 
-  const createPost = (e) => {
+  const createPost = async (e) => {
     e.preventDefault();
     mutation.mutate({
       desc: postData.desc,
-      img: file,
+      img: await uploadImage(file),
       city: postData.city,
       weather: postData.weather,
       country: postData.country,
@@ -91,15 +109,11 @@ const AddPost = () => {
           type="file"
           name="img-input"
           id="img-input"
-          onChange={(e) => setFile(e.target.files[0])}
+          onChange={(e) => convertImageToBase64(e)}
         />
         <label htmlFor="img-input" className="upload-img">
           {file ? (
-            <img
-              className="uploaded-img"
-              alt="uploaded-img"
-              src={URL.createObjectURL(file)}
-            />
+            <img className="uploaded-img" alt="uploaded-img" src={file} />
           ) : (
             <>
               <i className="fa-solid fa-file-image"></i>
