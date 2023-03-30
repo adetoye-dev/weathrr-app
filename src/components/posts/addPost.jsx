@@ -12,6 +12,7 @@ import { useTheme } from "@mui/material/styles";
 import WeatherSelect from "../formControl/WeatherSelect";
 import CountrySelect from "../formControl/CountrySelect";
 import server from "../../apis/server";
+import Loader from "../loader/Loader";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import "./addPost.css";
@@ -20,6 +21,7 @@ const AddPost = () => {
   const { open, handleClose } = useAddPost();
   const { currentUser } = useUserData();
   const [file, setFile] = useState();
+  const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState({
     desc: "",
     weather: "",
@@ -35,6 +37,7 @@ const AddPost = () => {
   const closeModal = () => {
     handleClose();
     setFile("");
+    setLoading(false);
   };
 
   const convertImageToBase64 = (e) => {
@@ -72,6 +75,7 @@ const AddPost = () => {
 
   const createPost = async (e) => {
     e.preventDefault();
+    setLoading(true);
     mutation.mutate({
       desc: postData.desc,
       img: await uploadImage(file),
@@ -104,56 +108,62 @@ const AddPost = () => {
         </div>
       </DialogTitle>
       <DialogContent>
-        <input
-          autoFocus
-          type="file"
-          name="img-input"
-          id="img-input"
-          onChange={(e) => convertImageToBase64(e)}
-        />
-        <label htmlFor="img-input" className="upload-img">
-          {file ? (
-            <img className="uploaded-img" alt="uploaded-img" src={file} />
-          ) : (
-            <>
-              <i className="fa-solid fa-file-image"></i>
-              <span>Upload Image</span>{" "}
-            </>
-          )}
-        </label>
-        <span className="selected-file">
-          {file ? file.name : "No file chosen"}
-        </span>
+        {loading ? (
+          <Loader loaderText="Creating post..." />
+        ) : (
+          <>
+            <input
+              autoFocus
+              type="file"
+              name="img-input"
+              id="img-input"
+              onChange={(e) => convertImageToBase64(e)}
+            />
+            <label htmlFor="img-input" className="upload-img">
+              {file ? (
+                <img className="uploaded-img" alt="uploaded-img" src={file} />
+              ) : (
+                <>
+                  <i className="fa-solid fa-file-image"></i>
+                  <span>Upload Image</span>{" "}
+                </>
+              )}
+            </label>
+            <span className="selected-file">
+              {file ? file.name : "No file chosen"}
+            </span>
 
-        <TextField
-          margin="dense"
-          name="desc"
-          label="Add Caption"
-          type="text"
-          fullWidth
-          variant="standard"
-          onChange={handleChange}
-        />
+            <TextField
+              margin="dense"
+              name="desc"
+              label="Add Caption"
+              type="text"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
 
-        <TextField
-          margin="dense"
-          name="city"
-          label="Enter City"
-          type="text"
-          fullWidth
-          variant="standard"
-          onChange={handleChange}
-        />
-        <div className="select-fields">
-          <WeatherSelect
-            weather={postData.weather}
-            handleChange={handleChange}
-          />
-          <CountrySelect
-            country={postData.country}
-            handleChange={handleChange}
-          />
-        </div>
+            <TextField
+              margin="dense"
+              name="city"
+              label="Enter City"
+              type="text"
+              fullWidth
+              variant="standard"
+              onChange={handleChange}
+            />
+            <div className="select-fields">
+              <WeatherSelect
+                weather={postData.weather}
+                handleChange={handleChange}
+              />
+              <CountrySelect
+                country={postData.country}
+                handleChange={handleChange}
+              />
+            </div>
+          </>
+        )}
       </DialogContent>
       <DialogActions>
         <Button onClick={closeModal}>Cancel</Button>
