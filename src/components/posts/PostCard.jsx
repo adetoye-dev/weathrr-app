@@ -28,7 +28,7 @@ const PostCard = ({ postData }) => {
   });
 
   const viewPost = () => {
-    navigate(`/posts/${postData.title}`, {
+    navigate(`/posts/${postData.id}`, {
       state: { ...postData },
     });
   };
