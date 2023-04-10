@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const SinglePostPage = () => {
   const { state } = useLocation();
-  console.log(state);
+
   return (
     <>
       <div className="single-post-nav"></div>
