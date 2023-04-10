@@ -11,11 +11,17 @@ import { useTheme } from "@mui/material/styles";
 import server from "../../apis/server";
 import Loader from "../loader/Loader";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import "./UpdateProfile.css";
 
 const UpdateProfile = () => {
   const { open, handleClose } = useUpdateProfile();
   const { currentUser } = useUserData();
   const [loading, setLoading] = useState(false);
+  const [ariaControl, setAriaControl] = useState(false);
+
+  const handleAriaChange = () => {
+    setAriaControl(true);
+  };
 
   const [file, setFile] = useState();
   const [formData, setFormData] = useState({
@@ -88,35 +94,59 @@ const UpdateProfile = () => {
         {loading ? (
           <Loader loaderText="Updating profile..." />
         ) : (
-          <form>
-            <input
-              type="file"
-              name="profilePic"
-              id="profilePic"
-              onChange={(e) => convertImageToBase64(e)}
-            />
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="about"
-              id="about"
-              value={formData.about}
-              onChange={handleChange}
-            />
-            <input
-              type="text"
-              name="city"
-              id="city"
-              value={formData.city}
-              onChange={handleChange}
-            />
-          </form>
+          <>
+            <div className="edit-profile-pic">
+              <div className="user-image">
+                <img src={currentUser.profilePic} alt="profile-pic" />
+              </div>
+              <span className="edit-img-icon" onClick={handleAriaChange}>
+                <i className="fa-solid fa-pen"></i>
+              </span>
+            </div>
+            <form className="update-profile-form">
+              <input
+                className="update-form-inputs profile-pic-input"
+                aria-visible={ariaControl}
+                type="file"
+                name="profilePic"
+                id="profilePic"
+                onChange={(e) => convertImageToBase64(e)}
+              />
+              <label htmlFor="name" className="update-form-label">
+                Name:
+              </label>
+              <input
+                className="update-form-inputs"
+                type="text"
+                name="name"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <label htmlFor="about" className="update-form-label">
+                About Me:
+              </label>
+              <textarea
+                className="update-form-inputs"
+                type="text"
+                name="about"
+                id="about"
+                value={formData.about}
+                onChange={handleChange}
+              />
+              <label htmlFor="city" className="update-form-label">
+                Location:
+              </label>
+              <input
+                className="update-form-inputs"
+                type="text"
+                name="city"
+                id="city"
+                value={formData.city}
+                onChange={handleChange}
+              />
+            </form>
+          </>
         )}
       </DialogContent>
       <DialogActions>
