@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 const SinglePostPage = () => {
   const { state } = useLocation();
+  console.log(state);
   return (
     <>
       <div className="single-post-nav"></div>
@@ -16,7 +17,7 @@ const SinglePostPage = () => {
               alt="fav-icon"
             />
           </div>
-          <img src={`/images/${state.img}`} alt="post-image" />
+          <img src={state.imgUrl} alt="post-image" />
         </div>
         <div className="single-post-data">
           <div className="single-post-location-card">
@@ -24,17 +25,16 @@ const SinglePostPage = () => {
               <span className="icon">
                 <img src="/icons/location-icon.png" alt="location-icon" />
               </span>
-              <span className="post-location">{state.city}</span>
+              <span className="post-location">{`${state.city}, ${state.country}`}</span>
             </div>
             <div className="post-weather-info">
-              <span className="temp">{state.temp}</span>
+              <span className="temp">{state.weather}</span>
               <span className="icon">
-                <img src="/icons/clear sky.svg" />
+                <img src={`/icons/${state.weather}.svg`} />
               </span>
             </div>
           </div>
-          <h2 className="single-post-title">{state.title}</h2>
-          <p className="post-desc">{state.postDesc}</p>
+          <p className="single-post-desc">{state.desc}</p>
         </div>
       </div>
     </>
