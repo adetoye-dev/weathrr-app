@@ -87,10 +87,10 @@ const PrimaryNav = () => {
                   closeOptions();
                 }}
               >
-                <i class="fa-solid fa-plus"></i> New Post
+                <i className="fa-solid fa-plus"></i> New Post
               </span>
               <span className="logout option" onClick={closeOptions}>
-                <i class="fa-solid fa-right-from-bracket"></i>
+                <i className="fa-solid fa-right-from-bracket"></i>
                 <Link to="/logout"> Logout</Link>
               </span>
             </div>
