@@ -91,6 +91,7 @@
   color: var(--black);
 }
 
+.success,
 .err-msg {
   margin: 0 auto;
   padding: 1rem;
@@ -99,5 +100,16 @@
   border: 1px solid var(--black);
   background-color: var(--white);
   border-radius: 0.6rem;
+}
+
+.input-err {
+  color: var(--purple);
+}
+
+.err-msg {
   color: rgb(233, 14, 83);
+}
+
+.success {
+  color: rgb(44, 173, 12);
 }
