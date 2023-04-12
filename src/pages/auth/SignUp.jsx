@@ -8,7 +8,7 @@ const SignUp = () => {
   const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-  const [formInputs, setFormInputs] = useState({
+  const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
@@ -19,24 +19,19 @@ const SignUp = () => {
   const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
-    setFormInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const register = async (e) => {
     e.preventDefault();
-    const v1 = USER_REGEX.test(formInputs.username);
-    const v2 = PWD_REGEX.test(formInputs.password);
-    if (
-      !v1 ||
-      !v2 ||
-      formInputs.email.length <= 0 ||
-      formInputs.name.length <= 0
-    ) {
+    const v1 = USER_REGEX.test(formData.username);
+    const v2 = PWD_REGEX.test(formData.password);
+    if (!v1 || !v2 || formData.email.length <= 0 || formData.name.length <= 0) {
       setInputNotValid(true);
       return;
     }
     try {
-      const response = await server.post("/auth/register", formInputs);
+      const response = await server.post("/auth/register", formData);
       console.log(response);
       setSuccess(response);
     } catch (err) {
@@ -67,10 +62,10 @@ const SignUp = () => {
               onChange={handleChange}
             ></input>
             {inputNotValid ? (
-              formInputs.username.length === 0 ? (
+              formData.username.length === 0 ? (
                 <span className="input-err">This field is required</span>
               ) : (
-                !USER_REGEX.test(formInputs.username) && (
+                !USER_REGEX.test(formData.username) && (
                   <span className="input-err">
                     4 to 24 characters.
                     <br />
@@ -95,7 +90,7 @@ const SignUp = () => {
               placeholder="example@mail.com"
               onChange={handleChange}
             ></input>
-            {inputNotValid && formInputs.email.length === 0 ? (
+            {inputNotValid && formData.email.length === 0 ? (
               <span className="input-err">This field is required</span>
             ) : (
               ""
@@ -113,10 +108,10 @@ const SignUp = () => {
               onChange={handleChange}
             ></input>
             {inputNotValid ? (
-              formInputs.password.length === 0 ? (
+              formData.password.length === 0 ? (
                 <span className="input-err">This field is required</span>
               ) : (
-                !PWD_REGEX.test(formInputs.password) && (
+                !PWD_REGEX.test(formData.password) && (
                   <span className="input-err">
                     8 to 24 characters.
                     <br />
@@ -147,7 +142,7 @@ const SignUp = () => {
               placeholder="FirstName LastName"
               onChange={handleChange}
             ></input>
-            {inputNotValid && formInputs.name.length === 0 ? (
+            {inputNotValid && formData.name.length === 0 ? (
               <span className="input-err">This field is required</span>
             ) : (
               ""
