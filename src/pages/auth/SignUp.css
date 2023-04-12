@@ -28,7 +28,7 @@
 
 .user-auth-details {
   background-color: var(--white);
-  padding: 4rem 2rem;
+  padding: 2.5rem 2rem;
   border: 0.1rem solid var(--black);
   box-shadow: 6.5px 8.66667px 16.25px 1.08333px rgba(35, 40, 35, 0.1);
   border-radius: 3rem;
@@ -89,4 +89,27 @@
 
 .switch-page a {
   color: var(--black);
+}
+
+.success,
+.err-msg {
+  margin: 0 auto;
+  padding: 1rem;
+  min-width: 22rem;
+  text-align: center;
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  border-radius: 0.6rem;
+}
+
+.input-err {
+  color: var(--purple);
+}
+
+.err-msg {
+  color: rgb(233, 14, 83);
+}
+
+.success {
+  color: rgb(44, 173, 12);
 }

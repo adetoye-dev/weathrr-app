@@ -5,27 +5,37 @@ import server from "../../apis/server";
 import "./SignUp.css";
 
 const SignUp = () => {
-  const [formInputs, setFormInputs] = useState({
+  const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
+  const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
     name: "",
   });
-  const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [inputNotValid, setInputNotValid] = useState(false);
+  const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
-    setFormInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const register = async (e) => {
     e.preventDefault();
+    const v1 = USER_REGEX.test(formData.username);
+    const v2 = PWD_REGEX.test(formData.password);
+    if (!v1 || !v2 || formData.email.length <= 0 || formData.name.length <= 0) {
+      setInputNotValid(true);
+      return;
+    }
     try {
-      const response = await server.post("/auth/register", formInputs);
+      const response = await server.post("/auth/register", formData);
       console.log(response);
+      setSuccess(response);
     } catch (err) {
       console.log(err);
-      setError(true);
       setErrorMsg(err.response.data);
     }
   };
@@ -36,8 +46,9 @@ const SignUp = () => {
         <img src={Logo} alt="logo" />
       </span>
       <p className="sign-up-text">Create a new account</p>
+      {success ? <p className="success">{errorMsg}</p> : ""}
+      {errorMsg ? <p className="err-msg">{errorMsg}</p> : ""}
       <form className="auth-form">
-        {error ? errorMsg : ""}
         <div className="user-auth-details">
           <div className="auth-detail">
             <label htmlFor="username">User name</label>
@@ -45,10 +56,29 @@ const SignUp = () => {
               id="username"
               name="username"
               type="text"
-              value={formInputs.username}
               placeholder="create a user name"
+              required
+              autoComplete="off"
+              value={formData.username}
               onChange={handleChange}
             ></input>
+            {inputNotValid ? (
+              formData.username.length === 0 ? (
+                <span className="input-err">This field is required</span>
+              ) : (
+                !USER_REGEX.test(formData.username) && (
+                  <span className="input-err">
+                    4 to 24 characters.
+                    <br />
+                    Must begin with a letter.
+                    <br />
+                    Letters, numbers, underscores, hyphens allowed.
+                  </span>
+                )
+              )
+            ) : (
+              ""
+            )}
           </div>
           <div className="auth-detail">
             <label htmlFor="email">Email</label>
@@ -56,10 +86,17 @@ const SignUp = () => {
               id="email"
               name="email"
               type="email"
-              value={formInputs.email}
+              autoComplete="off"
+              required
               placeholder="example@mail.com"
               onChange={handleChange}
+              value={formData.email}
             ></input>
+            {inputNotValid && formData.email.length === 0 ? (
+              <span className="input-err">This field is required</span>
+            ) : (
+              ""
+            )}
           </div>
           <div className="auth-detail">
             <label htmlFor="password">Password</label>
@@ -67,10 +104,35 @@ const SignUp = () => {
               id="password"
               name="password"
               type="password"
-              value={formInputs.password}
+              autoComplete="off"
+              required
               placeholder="Your password"
               onChange={handleChange}
+              value={formData.password}
             ></input>
+            {inputNotValid ? (
+              formData.password.length === 0 ? (
+                <span className="input-err">This field is required</span>
+              ) : (
+                !PWD_REGEX.test(formData.password) && (
+                  <span className="input-err">
+                    8 to 24 characters.
+                    <br />
+                    Must include uppercase and lowercase letters, a number and a
+                    special character.
+                    <br />
+                    Allowed special characters:
+                    <span aria-label="exclamation mark">!</span>
+                    <span aria-label="at symbol">@</span>
+                    <span aria-label="hashtag">#</span>
+                    <span aria-label="dollar sign">$</span>
+                    <span aria-label="percent">%</span>
+                  </span>
+                )
+              )
+            ) : (
+              ""
+            )}
           </div>
           <div className="auth-detail">
             <label htmlFor="name">Name</label>
@@ -78,20 +140,22 @@ const SignUp = () => {
               id="name"
               name="name"
               type="text"
-              value={formInputs.name}
+              autoComplete="off"
+              required
               placeholder="FirstName LastName"
               onChange={handleChange}
+              value={formData.name}
             ></input>
+            {inputNotValid && formData.name.length === 0 ? (
+              <span className="input-err">This field is required</span>
+            ) : (
+              ""
+            )}
           </div>
-          <span className="forgot-password">Forgot password?</span>
         </div>
         <button className="auth-submit-btn" onClick={register}>
           Sign Up
         </button>
-        <p className="agreement-text">
-          By creating an account you agree with our <a href="#">Terms of use</a>{" "}
-          and <a href="#">privacy policy</a>
-        </p>
       </form>
       <div className="switch-page">
         Already have an account? <Link to="/login">Log In</Link>
