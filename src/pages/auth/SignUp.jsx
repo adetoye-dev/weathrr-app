@@ -83,15 +83,10 @@ const SignUp = () => {
               onChange={handleChange}
             ></input>
           </div>
-          <span className="forgot-password">Forgot password?</span>
         </div>
         <button className="auth-submit-btn" onClick={register}>
           Sign Up
         </button>
-        <p className="agreement-text">
-          By creating an account you agree with our <a href="#">Terms of use</a>{" "}
-          and <a href="#">privacy policy</a>
-        </p>
       </form>
       <div className="switch-page">
         Already have an account? <Link to="/login">Log In</Link>
