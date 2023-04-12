@@ -36,8 +36,8 @@ const SignUp = () => {
         <img src={Logo} alt="logo" />
       </span>
       <p className="sign-up-text">Create a new account</p>
+      {error ? <p className="err-msg">{errorMsg}</p> : ""}
       <form className="auth-form">
-        {error ? <p className="err-msg">{errorMsg}</p> : ""}
         <div className="user-auth-details">
           <div className="auth-detail">
             <label htmlFor="username">User name</label>
