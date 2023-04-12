@@ -59,6 +59,7 @@ const SignUp = () => {
               placeholder="create a user name"
               required
               autoComplete="off"
+              value={formData.username}
               onChange={handleChange}
             ></input>
             {inputNotValid ? (
@@ -89,6 +90,7 @@ const SignUp = () => {
               required
               placeholder="example@mail.com"
               onChange={handleChange}
+              value={formData.email}
             ></input>
             {inputNotValid && formData.email.length === 0 ? (
               <span className="input-err">This field is required</span>
@@ -106,6 +108,7 @@ const SignUp = () => {
               required
               placeholder="Your password"
               onChange={handleChange}
+              value={formData.password}
             ></input>
             {inputNotValid ? (
               formData.password.length === 0 ? (
@@ -141,6 +144,7 @@ const SignUp = () => {
               required
               placeholder="FirstName LastName"
               onChange={handleChange}
+              value={formData.name}
             ></input>
             {inputNotValid && formData.name.length === 0 ? (
               <span className="input-err">This field is required</span>
