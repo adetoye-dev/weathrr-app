@@ -3,11 +3,12 @@ import Logo from "../../assets/logo.svg";
 import "./Login.css";
 import { useUserData } from "../../contexts/AuthContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
   const { login } = useUserData();
+  const { state } = useLocation();
 
   const [formInputs, setFormInputs] = useState({
     username: "",
@@ -34,6 +35,7 @@ const Login = () => {
         <img src={Logo} alt="logo" />
       </span>
       <p className="sign-in-text">Sign in to your account</p>
+      {state ? <p className="success">{state}</p> : ""}
       <form className="auth-form">
         <div className="user-auth-details">
           <div className="auth-detail">
