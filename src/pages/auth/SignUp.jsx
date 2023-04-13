@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import server from "../../apis/server";
 import "./SignUp.css";
@@ -14,6 +14,12 @@ const SignUp = () => {
     password: "",
     name: "",
   });
+
+  const navigate = useNavigate();
+
+  const handleSignUpSuccess = (successMsg) => {
+    navigate("/login", { state: successMsg });
+  };
 
   const [inputsFocus, setInputsFocus] = useState({
     username: false,
@@ -36,7 +42,6 @@ const SignUp = () => {
 
   const [errorMsg, setErrorMsg] = useState(null);
   const [inputNotValid, setInputNotValid] = useState(false);
-  const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -53,8 +58,7 @@ const SignUp = () => {
     }
     try {
       const response = await server.post("/auth/register", formData);
-      console.log(response);
-      setSuccess(response);
+      handleSignUpSuccess(response.data);
     } catch (err) {
       console.log(err);
       setErrorMsg(err.response.data);
@@ -67,7 +71,6 @@ const SignUp = () => {
         <img src={Logo} alt="logo" />
       </span>
       <p className="sign-up-text">Create a new account</p>
-      {success ? <p className="success">{errorMsg}</p> : ""}
       {errorMsg ? <p className="err-msg">{errorMsg}</p> : ""}
       <form className="auth-form">
         <div className="user-auth-details">
