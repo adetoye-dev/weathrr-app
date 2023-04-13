@@ -102,11 +102,12 @@
   border-radius: 0.6rem;
 }
 
-.input-err {
+.instructions {
   color: var(--purple);
 }
 
-.err-msg {
+.err-msg,
+.input-err {
   color: rgb(233, 14, 83);
 }
 
