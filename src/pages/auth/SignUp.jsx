@@ -14,6 +14,26 @@ const SignUp = () => {
     password: "",
     name: "",
   });
+
+  const [inputsFocus, setInputsFocus] = useState({
+    username: false,
+    email: false,
+    password: false,
+    name: false,
+  });
+
+  const handleInputFocus = (e) => {
+    setInputsFocus((prevInputFocus) => {
+      return { ...prevInputFocus, [e.target.name]: true };
+    });
+  };
+
+  const handleInputBlur = (e) => {
+    setInputsFocus((prevInputFocus) => {
+      return { ...prevInputFocus, [e.target.name]: false };
+    });
+  };
+
   const [errorMsg, setErrorMsg] = useState(null);
   const [inputNotValid, setInputNotValid] = useState(false);
   const [success, setSuccess] = useState(null);
@@ -28,6 +48,7 @@ const SignUp = () => {
     const v2 = PWD_REGEX.test(formData.password);
     if (!v1 || !v2 || formData.email.length <= 0 || formData.name.length <= 0) {
       setInputNotValid(true);
+      setErrorMsg("Invalid Inputs!!");
       return;
     }
     try {
@@ -61,21 +82,24 @@ const SignUp = () => {
               autoComplete="off"
               value={formData.username}
               onChange={handleChange}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
             ></input>
-            {inputNotValid ? (
-              formData.username.length === 0 ? (
-                <span className="input-err">This field is required</span>
-              ) : (
-                !USER_REGEX.test(formData.username) && (
-                  <span className="input-err">
-                    4 to 24 characters.
-                    <br />
-                    Must begin with a letter.
-                    <br />
-                    Letters, numbers, underscores, hyphens allowed.
-                  </span>
-                )
-              )
+            {inputsFocus.username &&
+            formData.username &&
+            !USER_REGEX.test(formData.username) ? (
+              <span className="instructions">
+                4 to 24 characters.
+                <br />
+                Must begin with a letter.
+                <br />
+                Letters, numbers, underscores, hyphens allowed.
+              </span>
+            ) : (
+              ""
+            )}
+            {inputNotValid && formData.username.length === 0 ? (
+              <span className="input-err">This field is required</span>
             ) : (
               ""
             )}
@@ -90,6 +114,8 @@ const SignUp = () => {
               required
               placeholder="example@mail.com"
               onChange={handleChange}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
               value={formData.email}
             ></input>
             {inputNotValid && formData.email.length === 0 ? (
@@ -108,28 +134,31 @@ const SignUp = () => {
               required
               placeholder="Your password"
               onChange={handleChange}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
               value={formData.password}
             ></input>
-            {inputNotValid ? (
-              formData.password.length === 0 ? (
-                <span className="input-err">This field is required</span>
-              ) : (
-                !PWD_REGEX.test(formData.password) && (
-                  <span className="input-err">
-                    8 to 24 characters.
-                    <br />
-                    Must include uppercase and lowercase letters, a number and a
-                    special character.
-                    <br />
-                    Allowed special characters:
-                    <span aria-label="exclamation mark">!</span>
-                    <span aria-label="at symbol">@</span>
-                    <span aria-label="hashtag">#</span>
-                    <span aria-label="dollar sign">$</span>
-                    <span aria-label="percent">%</span>
-                  </span>
-                )
-              )
+            {inputsFocus.password &&
+            formData.password &&
+            !PWD_REGEX.test(formData.password) ? (
+              <span className="instructions">
+                8 to 24 characters.
+                <br />
+                Must include uppercase and lowercase letters, a number and a
+                special character.
+                <br />
+                Allowed special characters:
+                <span aria-label="exclamation mark">!</span>
+                <span aria-label="at symbol">@</span>
+                <span aria-label="hashtag">#</span>
+                <span aria-label="dollar sign">$</span>
+                <span aria-label="percent">%</span>
+              </span>
+            ) : (
+              ""
+            )}
+            {inputNotValid && formData.password.length === 0 ? (
+              <span className="input-err">This field is required</span>
             ) : (
               ""
             )}
@@ -144,6 +173,8 @@ const SignUp = () => {
               required
               placeholder="FirstName LastName"
               onChange={handleChange}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
               value={formData.name}
             ></input>
             {inputNotValid && formData.name.length === 0 ? (
