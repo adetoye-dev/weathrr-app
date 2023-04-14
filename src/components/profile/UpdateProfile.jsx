@@ -84,7 +84,11 @@ const UpdateProfile = () => {
   const updateProfile = async (e) => {
     e.preventDefault();
     setLoading(true);
-    mutation.mutate({ img: await uploadImage(file), ...formData });
+    let imgData = { url: currentUser.profilePic, id: currentUser.picId };
+    if (file) {
+      imgData = await uploadImage(file);
+    }
+    mutation.mutate({ img: imgData, ...formData });
   };
 
   return (
