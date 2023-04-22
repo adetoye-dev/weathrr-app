@@ -81,3 +81,43 @@
 .switch-page a {
   color: var(--black);
 }
+
+.sign-in-divider {
+  display: flex;
+  height: auto;
+  width: 60%;
+  max-width: 400px;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.lines {
+  height: 1px;
+  width: 40%;
+  background-color: var(--black);
+}
+
+.or {
+  width: 3rem;
+  background-color: var(--white);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-btn {
+  display: flex;
+  gap: 1.5rem;
+  background-color: var(--white);
+  align-items: center;
+  padding: 1rem 2.5rem;
+  border-radius: 1.6rem;
+  cursor: pointer;
+}
+.google-btn:hover {
+  border: 1px solid var(--black);
+}

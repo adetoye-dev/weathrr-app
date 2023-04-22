@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login } = useUserData();
+  const { login, googleSignIn } = useUserData();
   const { state } = useLocation();
 
   const [formInputs, setFormInputs] = useState({
@@ -68,6 +68,15 @@ const Login = () => {
       </form>
       <div className="switch-page">
         Don't have an account? <Link to="/sign-up">Sign up</Link>
+      </div>
+      <div className="sign-in-divider">
+        <span className="lines"></span>
+        <span className="or">OR</span>
+        <span className="lines"></span>
+      </div>
+      <div className="google-btn" onClick={googleSignIn}>
+        <i className="fa-brands fa-google"></i>
+        <span>Sign in with Google</span>
       </div>
     </div>
   );

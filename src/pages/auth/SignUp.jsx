@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import server from "../../apis/server";
+import { useUserData } from "../../contexts/AuthContext";
 import "./SignUp.css";
 
 const SignUp = () => {
   const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
+  const { googleSignIn } = useUserData();
 
   const [formData, setFormData] = useState({
     username: "",
@@ -193,6 +196,15 @@ const SignUp = () => {
       </form>
       <div className="switch-page">
         Already have an account? <Link to="/login">Log In</Link>
+      </div>
+      <div className="sign-in-divider">
+        <span className="lines"></span>
+        <span className="or">OR</span>
+        <span className="lines"></span>
+      </div>
+      <div className="google-btn" onClick={googleSignIn}>
+        <i className="fa-brands fa-google"></i>
+        <span>Sign up with Google</span>
       </div>
     </div>
   );
