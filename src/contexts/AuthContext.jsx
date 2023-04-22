@@ -6,7 +6,7 @@ const serverBaseUrl = import.meta.env.VITE_SERVER_API_URL;
 
 const authContext = React.createContext();
 
-export const useUserData = () => {
+export const useAuthContext = () => {
   return useContext(authContext);
 };
 

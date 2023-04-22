@@ -4,7 +4,7 @@ import PageLayout from "./pages/layouts/PageLayout";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useUserData } from "./contexts/AuthContext";
+import { useAuthContext } from "./contexts/AuthContext";
 import Loader from "./components/loader/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -22,7 +22,7 @@ const Protected = ({ currentUser, children }) => {
 };
 
 const App = () => {
-  const { currentUser, validateAuth } = useUserData();
+  const { currentUser, validateAuth } = useAuthContext();
 
   useEffect(() => {
     validateAuth();

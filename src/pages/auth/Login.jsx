@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import "./Login.css";
-import { useUserData } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { login, googleSignIn } = useUserData();
+  const { login, googleSignIn } = useAuthContext();
   const { state } = useLocation();
 
   const [formInputs, setFormInputs] = useState({

@@ -2,11 +2,11 @@ import "./PostCard.css";
 import { useNavigate } from "react-router-dom";
 import server from "../../apis/server";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { useUserData } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 const PostCard = ({ postData }) => {
   const navigate = useNavigate();
-  const { currentUser } = useUserData();
+  const { currentUser } = useAuthContext();
 
   const queryClient = useQueryClient();
 

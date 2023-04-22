@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useUpdateProfile } from "../../contexts/UpdateProfileContext";
-import { useUserData } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import server from "../../apis/server";
@@ -15,7 +15,7 @@ import "./UpdateProfile.css";
 
 const UpdateProfile = () => {
   const { open, handleClose } = useUpdateProfile();
-  const { currentUser } = useUserData();
+  const { currentUser } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [ariaControl, setAriaControl] = useState(false);
 
