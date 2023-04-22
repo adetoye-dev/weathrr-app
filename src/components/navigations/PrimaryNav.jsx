@@ -4,13 +4,13 @@ import logo from "../../assets/logo.svg";
 import NavItem from "./NavItem";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useUserData } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import { useAddPost } from "../../contexts/AddPostContext";
 
 const PrimaryNav = () => {
   const [profileOptionsOpen, setProfileOptionsOpen] = useState(false);
   const navigate = useNavigate();
-  const { currentUser } = useUserData();
+  const { currentUser } = useAuthContext();
   const { handleClickOpen } = useAddPost();
 
   const navOptions = useRef();

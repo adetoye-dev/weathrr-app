@@ -1,12 +1,12 @@
 import "./ProfileCard.css";
-import { useUserData } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import server from "../../apis/server";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUpdateProfile } from "../../contexts/UpdateProfileContext";
 import UpdateProfile from "./UpdateProfile";
 
 const ProfileCard = ({ user }) => {
-  const { currentUser } = useUserData();
+  const { currentUser } = useAuthContext();
 
   const { handleClickOpen } = useUpdateProfile();
 

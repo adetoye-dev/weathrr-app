@@ -1,10 +1,10 @@
 import "./App.css";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import PageLayout from "./pages/layouts/PageLayout";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useUserData } from "./contexts/AuthContext";
+import { useAuthContext } from "./contexts/AuthContext";
 import Loader from "./components/loader/Loader";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -22,7 +22,11 @@ const Protected = ({ currentUser, children }) => {
 };
 
 const App = () => {
-  const { currentUser } = useUserData();
+  const { currentUser, validateAuth } = useAuthContext();
+
+  useEffect(() => {
+    validateAuth();
+  }, []);
 
   return (
     <Routes>
