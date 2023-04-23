@@ -11,9 +11,7 @@ export const useAuthContext = () => {
 };
 
 const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
-  );
+  const [currentUser, setCurrentUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -38,10 +36,6 @@ const AuthContextProvider = ({ children }) => {
       navigate("/login");
     }
   };
-
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(currentUser));
-  }, [currentUser]);
 
   const login = async (input) => {
     const response = await server.post("/auth/login", input);
