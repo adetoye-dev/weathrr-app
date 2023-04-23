@@ -7,6 +7,7 @@ import AuthContextProvider from "./contexts/AuthContext";
 import WeatherContextProvider from "./contexts/WeatherContext";
 import AddPostContextProvider from "./contexts/AddPostContext";
 import UpdateProfileContextProvider from "./contexts/UpdateProfileContext";
+import "./interceptors/serverInterceptor";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>

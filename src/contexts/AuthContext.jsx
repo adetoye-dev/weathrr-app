@@ -11,9 +11,7 @@ export const useAuthContext = () => {
 };
 
 const AuthContextProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
-  );
+  const [currentUser, setCurrentUser] = useState(null);
 
   const navigate = useNavigate();
 
@@ -23,14 +21,13 @@ const AuthContextProvider = ({ children }) => {
 
   const validateAuth = async () => {
     try {
-      const data = await server
-        .get("/auth/validate", {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Credentials": true,
-          },
-        })
-        .then((res) => res.data);
+      const { data } = await server.post("/auth/validate", {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      });
+
       setCurrentUser(data.user);
       console.log(data);
     } catch (error) {
@@ -39,18 +36,20 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(currentUser));
-  }, [currentUser]);
-
   const login = async (input) => {
-    const response = await server.post("/auth/login", input);
+    const { data } = await server.post("/auth/login", input);
 
-    setCurrentUser(response.data);
+    server.defaults.headers.common["Authorization"] = `Bearer ${data["token"]}`;
+    setCurrentUser(data.user);
   };
 
   const contextValues = useMemo(
-    () => ({ currentUser, login, googleSignIn, validateAuth }),
+    () => ({
+      currentUser,
+      login,
+      googleSignIn,
+      validateAuth,
+    }),
     [currentUser]
   );
 
