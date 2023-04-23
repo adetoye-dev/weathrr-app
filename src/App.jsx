@@ -87,7 +87,10 @@ const App = () => {
           }
         />
       </Route>
-      <Route path="login" element={<Login />} />
+      <Route
+        path="login"
+        element={currentUser ? <Navigate to="/" /> : <Login />}
+      />
       <Route path="sign-up" element={<SignUp />} />
     </Routes>
   );
