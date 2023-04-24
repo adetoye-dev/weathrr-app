@@ -23,11 +23,12 @@ const ProfilePage = () => {
   });
 
   useEffect(() => {
-    const fetchUser = () => {
+    const fetchUser = async () => {
       try {
-        const { data } = server.get(`/users/${userId}`);
+        const { data } = await server.get(`/users/${userId}`);
 
         setProfileData(data);
+        console.log(data);
         setFetchingProfile(false);
       } catch (err) {
         setProfileFetchError(true);

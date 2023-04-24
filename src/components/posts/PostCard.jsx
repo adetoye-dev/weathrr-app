@@ -76,12 +76,15 @@ const PostCard = ({ postData }) => {
         <img src={postData.imgUrl} alt="post-image" loading="lazy" />
       </div>
       <div className="user-info flex-center-y">
-        <div className="user-img" onClick={() => viewProfile(postData.userId)}>
+        <div
+          className="user-img"
+          onClick={() => viewProfile(postData.creatorId)}
+        >
           <img src={postCreator?.profilePic} alt="user" />
         </div>
         <span
           className="user-name"
-          onClick={() => viewProfile(postData.userId)}
+          onClick={() => viewProfile(postData.creatorId)}
         >
           {postCreator?.name}
         </span>
