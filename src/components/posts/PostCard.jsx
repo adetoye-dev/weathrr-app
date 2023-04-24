@@ -3,12 +3,28 @@ import { useNavigate } from "react-router-dom";
 import server from "../../apis/server";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useEffect, useState } from "react";
 
 const PostCard = ({ postData }) => {
   const navigate = useNavigate();
   const { currentUser } = useAuthContext();
+  const [postCreator, setPostCreator] = useState();
 
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const fetchCreator = async () => {
+      try {
+        const { data } = await server.post("/posts/creator", {
+          creatorId: postData.creatorId,
+        });
+        setPostCreator(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCreator();
+  }, []);
 
   const mutation = useMutation({
     mutationFn: (bookmarked) => {
@@ -49,7 +65,7 @@ const PostCard = ({ postData }) => {
       <div className="favorite-icon" onClick={handleBookmark}>
         <img
           src={`/icons/${
-            data && data.includes(currentUser.id)
+            data && data.includes(currentUser.userId)
               ? "favorite-active.svg"
               : "favorite.svg"
           }`}
@@ -60,14 +76,17 @@ const PostCard = ({ postData }) => {
         <img src={postData.imgUrl} alt="post-image" loading="lazy" />
       </div>
       <div className="user-info flex-center-y">
-        <div className="user-img" onClick={() => viewProfile(postData.userId)}>
-          <img src={postData.profilePic} alt="user" />
+        <div
+          className="user-img"
+          onClick={() => viewProfile(postData.creatorId)}
+        >
+          <img src={postCreator?.profilePic} alt="user" />
         </div>
         <span
           className="user-name"
-          onClick={() => viewProfile(postData.userId)}
+          onClick={() => viewProfile(postData.creatorId)}
         >
-          {postData.userName}
+          {postCreator?.name}
         </span>
       </div>
       <div className="post-info flex-center-y">
