@@ -20,8 +20,8 @@ const PrimaryNav = () => {
   };
 
   const viewProfile = () => {
-    navigate(`/profile/${currentUser.id}`, {
-      state: { userId: currentUser.id },
+    navigate(`/profile/${currentUser.name}`, {
+      state: { userId: currentUser.userId },
     });
   };
 
