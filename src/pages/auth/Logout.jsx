@@ -8,7 +8,8 @@ const Logout = () => {
   const { currentUser } = useAuthContext();
 
   useEffect(() => {
-    if (currentUser.channel === "google") {
+    const userChannel = currentUser?.userId.split("_")[0];
+    if (userChannel === "google") {
       window.open(serverBaseUrl + "/auth/google/logout", "_self");
     } else {
       window.open(serverBaseUrl + "/auth/logout", "_self");
