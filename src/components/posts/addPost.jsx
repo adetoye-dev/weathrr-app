@@ -6,7 +6,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useAddPost } from "../../contexts/AddPostContext";
-import { useUserData } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import WeatherSelect from "../formControl/WeatherSelect";
@@ -19,7 +19,7 @@ import "./addPost.css";
 
 const AddPost = () => {
   const { open, handleClose } = useAddPost();
-  const { currentUser } = useUserData();
+  const { currentUser } = useAuthContext();
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
   const [postData, setPostData] = useState({

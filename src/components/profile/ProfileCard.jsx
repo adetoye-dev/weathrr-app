@@ -1,21 +1,23 @@
 import "./ProfileCard.css";
-import { useUserData } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 import server from "../../apis/server";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUpdateProfile } from "../../contexts/UpdateProfileContext";
 import UpdateProfile from "./UpdateProfile";
 
 const ProfileCard = ({ user }) => {
-  const { currentUser } = useUserData();
+  const { currentUser } = useAuthContext();
 
   const { handleClickOpen } = useUpdateProfile();
 
   const queryClient = useQueryClient();
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["followers", user.id],
+    queryKey: ["followers", user.userId],
     queryFn: () =>
-      server.get("/relationships?userId=" + user.id).then((res) => res.data),
+      server
+        .get("/relationships?userId=" + user.userId)
+        .then((res) => res.data),
   });
 
   const {
@@ -23,17 +25,18 @@ const ProfileCard = ({ user }) => {
     error: err,
     data: followingData,
   } = useQuery({
-    queryKey: ["following", user.id],
+    queryKey: ["following", user.userId],
     queryFn: () =>
       server
-        .get("/relationships/following?userId=" + user.id)
+        .get("/relationships/following?userId=" + user.userId)
         .then((res) => res.data),
   });
 
   const mutation = useMutation({
     mutationFn: (followed) => {
-      if (followed) return server.delete("/relationships?userId=" + user.id);
-      return server.post("/relationships", { userId: user.id });
+      if (followed)
+        return server.delete("/relationships?userId=" + user.userId);
+      return server.post("/relationships", { userId: user.userId });
     },
     onSuccess: () => {
       // Invalidate and refetch
@@ -43,7 +46,7 @@ const ProfileCard = ({ user }) => {
 
   const handleFollow = (e) => {
     e.preventDefault();
-    mutation.mutate(data.includes(currentUser.id));
+    mutation.mutate(data.includes(currentUser.userId));
   };
 
   return (
@@ -78,13 +81,13 @@ const ProfileCard = ({ user }) => {
             </span>
           )}
         </div>
-        {user.id === currentUser.id ? (
+        {user.userId === currentUser.userId ? (
           <button className="follow-user-btn" onClick={handleClickOpen}>
             Update Profile
           </button>
         ) : (
           <button className="follow-user-btn" onClick={handleFollow}>
-            {data && data.includes(currentUser.id) ? "following" : "follow"}
+            {data && data.includes(currentUser.userId) ? "following" : "follow"}
           </button>
         )}
       </div>

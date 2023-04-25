@@ -1,25 +1,22 @@
 import Loader from "../../components/loader/Loader";
 import server from "../../apis/server";
-import { useQuery } from "@tanstack/react-query";
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useAuthContext } from "../../contexts/AuthContext";
+const serverBaseUrl = import.meta.env.VITE_SERVER_API_URL;
 
 const Logout = () => {
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["logout"],
-    queryFn: () => server.post("/auth/logout").then((res) => res.data),
-  });
+  const { currentUser } = useAuthContext();
 
-  return (
-    <>
-      {isLoading ? (
-        <Loader loaderText="Logging Out..." />
-      ) : error ? (
-        <div dangerouslySetInnerHTML={{ __html: error.response.data }} />
-      ) : (
-        data && <Navigate to="/login" replace={true} />
-      )}
-    </>
-  );
+  useEffect(() => {
+    const userChannel = currentUser?.userId.split("_")[0];
+    if (userChannel === "google") {
+      window.open(serverBaseUrl + "/auth/google/logout", "_self");
+    } else {
+      window.open(serverBaseUrl + "/auth/logout", "_self");
+    }
+  }, []);
+
+  return <Loader loaderText="Logging Out..." />;
 };
 
 export default Logout;
