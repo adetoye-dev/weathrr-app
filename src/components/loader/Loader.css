@@ -1,5 +1,6 @@
 .loader {
   width: 100%;
+  min-width: 25rem;
   height: 60vh;
   display: flex;
   align-items: center;
