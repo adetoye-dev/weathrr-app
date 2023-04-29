@@ -1,0 +1,56 @@
+.alert-container {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  top: 2rem;
+  z-index: 9999;
+}
+
+.alert {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  background-color: var(--white);
+  margin: 0 auto;
+  border: 1px solid;
+  border-radius: 0.8rem;
+  text-align: center;
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.alert-success {
+  color: rgb(32, 146, 3);
+}
+
+.alert-error {
+  color: rgb(233, 14, 83);
+}
+
+.alert-loader {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0.4rem;
+  width: 100%;
+  animation: swipe 2s linear;
+  animation-fill-mode: forwards;
+}
+
+.alert-success .alert-loader {
+  background-color: rgb(32, 146, 3);
+}
+
+.alert-error .alert-loader {
+  background-color: rgb(233, 14, 83);
+}
+
+@keyframes swipe {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0px;
+  }
+}
