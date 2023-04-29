@@ -14,11 +14,13 @@ import CountrySelect from "../formControl/CountrySelect";
 import server from "../../apis/server";
 import Loader from "../loader/Loader";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAlertContext } from "../../contexts/AlertContext";
 
 import "./addPost.css";
 
 const AddPost = () => {
   const { open, handleClose } = useAddPost();
+  const { setAlert } = useAlertContext();
   const { currentUser } = useAuthContext();
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(false);
@@ -66,10 +68,15 @@ const AddPost = () => {
         },
       });
     },
-    onSuccess: () => {
-      // Invalidate and refetch
+    onSuccess: (res) => {
       closeModal();
+      setAlert({ type: "success", message: res.data });
+      // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["posts"] });
+    },
+    onError: (err) => {
+      closeModal();
+      setAlert({ type: "error", message: "Adding Post Failed. Please retry!" });
     },
   });
 
