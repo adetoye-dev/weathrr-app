@@ -66,7 +66,7 @@ const PostCard = ({ postData }) => {
 
   const handleBookmark = (e) => {
     e.preventDefault();
-    mutation.mutate(data.includes(currentUser.id));
+    mutation.mutate(data.includes(currentUser.userId));
   };
 
   return (
