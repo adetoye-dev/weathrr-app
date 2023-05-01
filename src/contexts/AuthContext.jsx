@@ -37,10 +37,16 @@ const AuthContextProvider = ({ children }) => {
   };
 
   const login = async (input) => {
-    const { data } = await server.post("/auth/login", input);
+    const res = await server.post("/auth/login", input);
 
-    server.defaults.headers.common["Authorization"] = `Bearer ${data["token"]}`;
-    setCurrentUser(data.user);
+    server.defaults.headers.common[
+      "Authorization"
+    ] = `Bearer ${res?.data["token"]}`;
+
+    if (res.status === 200) {
+      setCurrentUser(res?.data?.user);
+      return "SignIn successful";
+    }
   };
 
   const contextValues = useMemo(

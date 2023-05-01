@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import "./Login.css";
 import { useAuthContext } from "../../contexts/AuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useAlertContext } from "../../contexts/AlertContext";
+import Alert from "../../components/alerts/Alert";
 
 const Login = () => {
   const navigate = useNavigate();
   const { login, googleSignIn } = useAuthContext();
   const { state } = useLocation();
+  const { setAlert } = useAlertContext();
 
   const [formInputs, setFormInputs] = useState({
     username: "",
@@ -18,12 +21,25 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await login(formInputs);
+      const res = await login(formInputs);
+      setAlert({
+        type: "success",
+        message: res,
+      });
       navigate("/");
     } catch (err) {
-      console.log(err.response.data);
+      setAlert({
+        type: "error",
+        message: err.response.data,
+      });
     }
   };
+
+  useEffect(() => {
+    if (state) {
+      setAlert({ type: "success", message: state });
+    }
+  }, [state]);
 
   const handleChange = (e) => {
     setFormInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -31,11 +47,11 @@ const Login = () => {
 
   return (
     <div className="login">
+      <Alert />
       <span className="page-logo">
         <img src={Logo} alt="logo" />
       </span>
       <p className="sign-in-text">Sign in to your account</p>
-      {state ? <p className="success">{state}</p> : ""}
       <form className="auth-form">
         <div className="user-auth-details">
           <div className="auth-detail">

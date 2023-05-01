@@ -11,11 +11,13 @@ import { useTheme } from "@mui/material/styles";
 import server from "../../apis/server";
 import Loader from "../loader/Loader";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useAlertContext } from "../../contexts/AlertContext";
 import "./UpdateProfile.css";
 
 const UpdateProfile = () => {
   const { open, handleClose } = useUpdateProfile();
   const { currentUser } = useAuthContext();
+  const { setAlert } = useAlertContext();
   const [loading, setLoading] = useState(false);
   const [ariaControl, setAriaControl] = useState(false);
 
@@ -74,10 +76,18 @@ const UpdateProfile = () => {
         },
       });
     },
-    onSuccess: () => {
-      // Invalidate and refetch
+    onSuccess: (res) => {
       closeModal();
+      setAlert({ type: "success", message: res.data });
+      // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["users"] });
+    },
+    onError: (err) => {
+      closeModal();
+      setAlert({
+        type: "error",
+        message: "Updating Profile Failed. Please retry!",
+      });
     },
   });
 
