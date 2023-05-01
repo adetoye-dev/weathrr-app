@@ -74,6 +74,12 @@
   border-radius: 1.5rem;
 }
 
+.auth-submit-btn:hover {
+  background-color: var(--background-color);
+  border-color: var(--grey);
+  color: var(--grey);
+}
+
 .switch-page {
   font-size: 1.3rem;
 }
