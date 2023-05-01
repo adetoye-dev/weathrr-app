@@ -4,11 +4,13 @@ import server from "../../apis/server";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useEffect, useState } from "react";
+import { useAlertContext } from "../../contexts/AlertContext";
 
 const PostCard = ({ postData }) => {
   const navigate = useNavigate();
   const { currentUser } = useAuthContext();
   const [postCreator, setPostCreator] = useState();
+  const { setAlert } = useAlertContext();
 
   const queryClient = useQueryClient();
 
@@ -31,9 +33,16 @@ const PostCard = ({ postData }) => {
       if (bookmarked) return server.delete("/bookmarks?postId=" + postData.id);
       return server.post("/bookmarks", { postId: postData.id });
     },
-    onSuccess: () => {
+    onSuccess: (res) => {
+      setAlert({ type: "success", message: res.data });
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["bookmarks"] });
+    },
+    onError: (err) => {
+      setAlert({
+        type: "error",
+        message: "Unable to save post. Please retry!",
+      });
     },
   });
 
@@ -57,7 +66,7 @@ const PostCard = ({ postData }) => {
 
   const handleBookmark = (e) => {
     e.preventDefault();
-    mutation.mutate(data.includes(currentUser.id));
+    mutation.mutate(data.includes(currentUser.userId));
   };
 
   return (
