@@ -34,58 +34,18 @@ const App = () => {
         path="/"
         element={
           <Protected currentUser={currentUser}>
-            <PageLayout />
+            <Suspense fallback={<Loader loaderText="Loading..." />}>
+              <PageLayout />
+            </Suspense>
           </Protected>
         }
       >
-        <Route
-          index
-          element={
-            <Suspense fallback={<Loader loaderText="Loading..." />}>
-              <HomePage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="posts/:id"
-          element={
-            <Suspense fallback={<Loader loaderText="Loading..." />}>
-              <SinglePostPage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="weather"
-          element={
-            <Suspense fallback={<Loader loaderText="Loading..." />}>
-              <WeatherPage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="logout"
-          element={
-            <Suspense fallback={<Loader loaderText="Loading..." />}>
-              <Logout />
-            </Suspense>
-          }
-        />
-        <Route
-          path="profile/:id"
-          element={
-            <Suspense fallback={<Loader loaderText="Loading..." />}>
-              <ProfilePage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="bookmarks"
-          element={
-            <Suspense fallback={<Loader loaderText="Loading..." />}>
-              <BookmarkPage />
-            </Suspense>
-          }
-        />
+        <Route index element={<HomePage />} />
+        <Route path="posts/:id" element={<SinglePostPage />} />
+        <Route path="weather" element={<WeatherPage />} />
+        <Route path="logout" element={<Logout />} />
+        <Route path="profile/:id" element={<ProfilePage />} />
+        <Route path="bookmarks" element={<BookmarkPage />} />
       </Route>
       <Route
         path="login"
