@@ -72,6 +72,7 @@
   border: 0.1rem solid var(--black);
   background-color: var(--white);
   border-radius: 1.5rem;
+  color: var(--black);
 }
 
 .auth-submit-btn:hover {
