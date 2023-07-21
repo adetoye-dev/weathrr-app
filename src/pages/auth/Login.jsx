@@ -11,6 +11,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, googleSignIn } = useAuthContext();
   const { state } = useLocation();
+  console.log(useLocation());
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
   const { setAlert } = useAlertContext();
 
   const [formInputs, setFormInputs] = useState({
@@ -20,18 +22,21 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoginLoading(true);
     try {
       const res = await login(formInputs);
       setAlert({
         type: "success",
         message: res,
       });
+      setIsLoginLoading(false);
       navigate("/");
     } catch (err) {
       setAlert({
         type: "error",
         message: err.response.data,
       });
+      setIsLoginLoading(false);
     }
   };
 
@@ -79,7 +84,11 @@ const Login = () => {
           <span className="forgot-password">Forgot password?</span>
         </div>
         <button type="submit" className="auth-submit-btn" onClick={handleLogin}>
-          Sign in
+          {isLoginLoading ? (
+            <i className="fa-solid fa-circle-notch fa-spin"></i>
+          ) : (
+            "Sign in"
+          )}
         </button>
       </form>
       <div className="switch-page">
