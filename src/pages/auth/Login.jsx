@@ -11,7 +11,6 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, googleSignIn } = useAuthContext();
   const { state } = useLocation();
-  console.log(useLocation());
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const { setAlert } = useAlertContext();
 

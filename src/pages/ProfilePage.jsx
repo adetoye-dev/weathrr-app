@@ -28,7 +28,6 @@ const ProfilePage = () => {
         const { data } = await server.get(`/users/${userId}`);
 
         setProfileData(data);
-        console.log(data);
         setFetchingProfile(false);
       } catch (err) {
         setProfileFetchError(true);
@@ -38,11 +37,9 @@ const ProfilePage = () => {
     //check if it's the logged in user's profile or not before fetching
     if (userId === currentUser.userId) {
       setProfileData(currentUser);
-      console.log("I ran");
     } else {
       setFetchingProfile(true);
       fetchUser();
-      console.log("fetch ran too");
     }
   }, [userId]);
 
