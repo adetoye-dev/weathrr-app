@@ -29,9 +29,7 @@ const AuthContextProvider = ({ children }) => {
       });
 
       setCurrentUser(data.user);
-      console.log(data);
     } catch (error) {
-      console.log(error);
       navigate("/login");
     }
   };

@@ -32,7 +32,6 @@ server.interceptors.response.use(
         {},
         { withCredentials: true }
       );
-      console.log(data.token);
       prevRequest.headers["Authorization"] = `Bearer ${data.token}`;
       return server(prevRequest);
     }

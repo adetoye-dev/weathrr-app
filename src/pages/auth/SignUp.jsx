@@ -11,6 +11,8 @@ const SignUp = () => {
 
   const { googleSignIn } = useAuthContext();
 
+  const [isSignUpLoading, setIsSignUpLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -59,11 +61,13 @@ const SignUp = () => {
       setErrorMsg("Invalid Inputs!!");
       return;
     }
+    setIsSignUpLoading(true);
     try {
       const response = await server.post("/auth/register", formData);
+      setIsSignUpLoading(false);
       handleSignUpSuccess(response.data);
     } catch (err) {
-      console.log(err);
+      setIsSignUpLoading(false);
       setErrorMsg(err.response.data);
     }
   };
@@ -191,7 +195,11 @@ const SignUp = () => {
           </div>
         </div>
         <button className="auth-submit-btn" onClick={register}>
-          Sign Up
+          {isSignUpLoading ? (
+            <i className="fa-solid fa-circle-notch fa-spin"></i>
+          ) : (
+            "Sign Up"
+          )}
         </button>
       </form>
       <div className="switch-page">

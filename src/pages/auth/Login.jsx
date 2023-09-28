@@ -11,6 +11,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { login, googleSignIn } = useAuthContext();
   const { state } = useLocation();
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  const [isPopUpOpen, setIsPopUpOpen] = useState(true);
   const { setAlert } = useAlertContext();
 
   const [formInputs, setFormInputs] = useState({
@@ -20,19 +22,26 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoginLoading(true);
     try {
       const res = await login(formInputs);
       setAlert({
         type: "success",
         message: res,
       });
+      setIsLoginLoading(false);
       navigate("/");
     } catch (err) {
       setAlert({
         type: "error",
         message: err.response.data,
       });
+      setIsLoginLoading(false);
     }
+  };
+
+  const togglePopUp = () => {
+    setIsPopUpOpen((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -79,7 +88,11 @@ const Login = () => {
           <span className="forgot-password">Forgot password?</span>
         </div>
         <button type="submit" className="auth-submit-btn" onClick={handleLogin}>
-          Sign in
+          {isLoginLoading ? (
+            <i className="fa-solid fa-circle-notch fa-spin"></i>
+          ) : (
+            "Sign in"
+          )}
         </button>
       </form>
       <div className="switch-page">
@@ -93,6 +106,28 @@ const Login = () => {
       <div className="google-btn" onClick={googleSignIn}>
         <i className="fa-brands fa-google"></i>
         <span>Sign in with Google</span>
+      </div>
+      <div className="overlay demo-login-data">
+        {isPopUpOpen ? (
+          <div className="pop-up">
+            <i
+              class="fa-solid fa-xmark cancel-pop-up"
+              onClick={togglePopUp}
+            ></i>
+            <h3>Demo Login</h3>
+            <p>
+              <strong>UserName:</strong> jdoe
+            </p>
+            <p>
+              <strong>PassWord:</strong> 12345
+            </p>
+          </div>
+        ) : (
+          ""
+        )}
+        <div className="overlay-btn" onClick={togglePopUp}>
+          <i class="fa-regular fa-comment-dots"></i>
+        </div>
       </div>
     </div>
   );
